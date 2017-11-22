@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e67326bf-9637-4a1f-8efb-d567d4ffa804" name="Default" comment="">
+    <list default="true" id="e67326bf-9637-4a1f-8efb-d567d4ffa804" name="Default" comment="Initial commit">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Client.class" afterPath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Client.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Controller/MainAppController.class" afterPath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Controller/MainAppController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Model/NetworkDataModel.class" afterPath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Model/NetworkDataModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/Client.java" afterPath="$PROJECT_DIR$/src/client_src/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/Model/RSAModel.java" afterPath="$PROJECT_DIR$/src/client_src/Model/RSAModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +30,8 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client_src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            <state relative-caret-position="483">
+              <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -164,38 +165,7 @@
             <path>
               <item name="CS 342 Project 05 - Networked Chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS 342 Project 05 - Networked Chat" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CS 342 Project 05 - Networked Chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS 342 Project 05 - Networked Chat" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CS 342 Project 05 - Networked Chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS 342 Project 05 - Networked Chat" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="CS 342 Project 05 - Networked Chat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CS 342 Project 05 - Networked Chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS 342 Project 05 - Networked Chat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CS 342 Project 05 - Networked Chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS 342 Project 05 - Networked Chat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client_src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CS 342 Project 05 - Networked Chat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS 342 Project 05 - Networked Chat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client_src" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -358,7 +328,7 @@
       <updated>1511300098654</updated>
       <workItem from="1511300105544" duration="1169000" />
       <workItem from="1511301659045" duration="26000" />
-      <workItem from="1511305707107" duration="4708000" />
+      <workItem from="1511305707107" duration="4935000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1511306019351</created>
@@ -381,15 +351,21 @@
       <option name="project" value="LOCAL" />
       <updated>1511314855330</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Initial commit">
+      <created>1511315247051</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1511315247051</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5903000" />
+    <option name="totallyTimeSpent" value="6130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="2374" height="1407" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -399,12 +375,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25275937" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14532872" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14532872" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -546,8 +522,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client_src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        <state relative-caret-position="483">
+          <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
           <folding />
         </state>
       </provider>

@@ -24,7 +24,7 @@ public class ClientsConnectedView extends JPanel {
         clientsSet = new HashSet<>();
 
         this.setPreferredSize(new Dimension(200, 500));
-        this.setBackground(Color.green);
+        this.setBackground(Color.YELLOW);
         this.setLayout(new BorderLayout());
 
 

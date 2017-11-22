@@ -1,6 +1,8 @@
 package Controller;
 
-import  View.*;
+import Model.ServerModel;
+
+import java.net.ServerSocket;
 
 
 public class ServerController {
@@ -8,6 +10,8 @@ public class ServerController {
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
+    private ServerModel serverModel;
+
 
 
     // ------------------------------------------------------------------------
@@ -15,7 +19,14 @@ public class ServerController {
     // ------------------------------------------------------------------------
 
     public ServerController() {
+        serverModel = new ServerModel();
+    }
 
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
+    public ServerModel getServerModel() {
+        return serverModel;
     }
 
 
@@ -30,18 +41,11 @@ public class ServerController {
 
 
 
-
-
     // ------------------------------------------------------------------------
     // Inner classes
     // ------------------------------------------------------------------------
 
-    class waitForClientData implements Runnable {
 
-        public void run () {
-            System.out.println("waitForClientData is running...");
-        }
-    }
 
 
 

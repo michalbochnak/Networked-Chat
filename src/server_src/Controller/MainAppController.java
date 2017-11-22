@@ -8,8 +8,13 @@ public class MainAppController {
 
 
     public MainAppController() {
+
         serverController = new ServerController();
         viewController = new ViewController();
+
+        // set IP and port labels
+        viewController.setServerInfo(serverController.getServerModel().getIpAddress(),
+                serverController.getServerModel().getServerPort());
     }
 
 }

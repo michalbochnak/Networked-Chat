@@ -1,16 +1,19 @@
 
-import Controller.MainAppController;
-
-
-
-
+import Model.ClientModel;
+import Model.MessageM;
+import Model.MessageModel;
 
 
 public class Client {
 
     public static void main(String args[]) {
 
-        System.out.println("Client...");
+        ClientModel client = new ClientModel("192.168.0.2", 51890);
+
+        MessageModel msg = new MessageModel();
+        msg.setSender("Michal");
+
+        client.sendData(msg);
 
     }
 

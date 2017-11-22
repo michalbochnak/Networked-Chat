@@ -10,7 +10,7 @@ public class Client {
 
     public static void main(String args[]) {
 
-        MainAppController mainAppController = new MainAppController();
+        System.out.println("Client...");
 
     }
 

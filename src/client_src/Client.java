@@ -1,6 +1,8 @@
 
+
+
+
 import Model.ClientModel;
-import Model.MessageM;
 import Model.MessageModel;
 
 
@@ -8,13 +10,13 @@ public class Client {
 
     public static void main(String args[]) {
 
-        ClientModel client = new ClientModel("192.168.0.2", 51890);
-
+        //
+        // Connection test, IP and port must be hardcoded as server specifies them
+        //
+        ClientModel client = new ClientModel("10.9.223.169", 51403);
         MessageModel msg = new MessageModel();
         msg.setSender("Michal");
-
         client.sendData(msg);
-
     }
 
 }

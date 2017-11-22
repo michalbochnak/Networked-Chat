@@ -14,7 +14,8 @@ public class ClientsConnectedView extends JPanel {
     private Set<JLabel> clientsSet;
     //private JPanel mainPanel;
     private JLabel header;
-    private JPanel clientsList;
+    private JScrollPane clientsListScrollPane;
+    private DefaultListModel clientList;
 
     // ------------------------------------------------------------------------
     // Constructors
@@ -26,13 +27,11 @@ public class ClientsConnectedView extends JPanel {
         this.setPreferredSize(new Dimension(200, 500));
         this.setBackground(Color.YELLOW);
         this.setLayout(new BorderLayout());
-
+        this.clientList = new DefaultListModel();
 
         //setupMainPanel();
         setupHeader();
-        setupClientsList();
-
-        //test();
+        setupClientsListScrollPane();
     }
 
     // FIXME: For testing only, to be removed
@@ -43,8 +42,18 @@ public class ClientsConnectedView extends JPanel {
         addClient("User 4");
         removeClient("User 2");
         removeClient("User 3");
+    }
 
-        updateClientsView();
+
+    //
+    // FIXME: remove, to test scroll pane
+    //
+    public void test2() {
+        DefaultListModel listModel = new DefaultListModel();
+        listModel.addElement("Michal");
+        listModel.addElement("Bochnak");
+        JList list = new JList(listModel);
+        clientsListScrollPane.setViewportView(list);
     }
 
 
@@ -63,53 +72,30 @@ public class ClientsConnectedView extends JPanel {
         this.add(header, BorderLayout.NORTH);
     }
 
+    /*
     private void setupClientsList() {
         clientsList = new JPanel();
         clientsList.setLayout(new GridLayout(10, 1));
         this.add(clientsList, BorderLayout.CENTER);
     }
+    */
+
+    public void setupClientsListScrollPane() {
+        clientsListScrollPane = new JScrollPane();
+        clientsListScrollPane.setPreferredSize(new Dimension(200, 100));
+        this.add(clientsListScrollPane);
+    }
 
     public void addClient(String id) {
-       clientsSet.add(new JLabel(id));
+       this.clientList.addElement(id);
+       JList list = new JList(clientList);
+       clientsListScrollPane.setViewportView(list);
     }
 
+    // FIXME: implement
     public void removeClient(String id) {
-        JLabel toRemove = findClientLabel(id);
-        if ( toRemove == null) {
-            System.out.println("Client not on the list");
-        }
-        else {
-            clientsSet.remove(toRemove);
-        }
+
     }
-
-    private JLabel findClientLabel(String id) {
-        System.out.println(clientsSet.size());
-        for (JLabel c : clientsSet) {
-            if (c.getText().equals(id)) {
-                return c;
-            }
-        }
-
-        return null;
-    }
-
-    private void updateClientsView() {
-        clearClients();
-        displayClients();
-    }
-
-    private void clearClients() {
-        for (JLabel cl : clientsSet) {
-            clientsList.remove(cl);
-        }
-    }
-
-    private void displayClients() {
-        for (JLabel cl : clientsSet)
-            clientsList.add(cl);
-    }
-
 
 }
 

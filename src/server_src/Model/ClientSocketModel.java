@@ -1,63 +1,42 @@
 package Model;
 
-import java.io.Serializable;
+import java.net.Socket;
 import java.util.ArrayList;
 
-public class MessageModel implements Serializable {
+public class ClientSocketModel extends Socket{
 
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
-    private String sender;
-    private ArrayList<Integer> encryptedMsg;
-    private String recipient;
-    private boolean disconnecting;
+    private String clientId;
+    private Socket clientSocket;
+
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public MessageModel () {
-        this.sender = "none";
-        this.recipient = "none";
-        this.encryptedMsg = new ArrayList<Integer>();
-        this.disconnecting = false;
+    public ClientSocketModel (Socket newClientSocket) {
+        this.clientId = newClientSocket.getInetAddress().getHostName();
+        this.clientSocket = newClientSocket;
     }
 
 
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
-    public String getSender() {
-        return sender;
+    public String getClientId() {
+        return clientId;
     }
 
-    public ArrayList<Integer> getEncryptedMsg() {
-        return encryptedMsg;
-    }
-
-    public String getRecipient() {
-        return recipient;
-    }
-
-    public boolean isDisconnecting() {
-        return this.disconnecting;
+    public Socket getClientSocket() {
+        return clientSocket;
     }
 
 
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
 
-    public void setEncryptedMsg(ArrayList<Integer> encryptedMsg) {
-        this.encryptedMsg = encryptedMsg;
-    }
-
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
 
 
     // ------------------------------------------------------------------------

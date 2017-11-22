@@ -1,6 +1,8 @@
 package Controller;
 
 import View.*;
+import sun.applet.Main;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,13 +18,15 @@ public class ViewController {
     private ClientsConnectedView clientsList;
     private MenuBarView menuBar;
     private ServerInfoView serverInfo;
+    private MainAppController mainAppController;
 
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
 
-    public ViewController() {
+    public ViewController(MainAppController mainAppController) {
+        this.mainAppController = mainAppController;
         setupFrame();
         setupMenuBar();
         setupMainPanel();
@@ -35,6 +39,33 @@ public class ViewController {
     // Getters
     // ------------------------------------------------------------------------
 
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public JLabel getClientsListHeader() {
+        return clientsListHeader;
+    }
+
+    public ClientsConnectedView getClientsList() {
+        return clientsList;
+    }
+
+    public MenuBarView getMenuBar() {
+        return menuBar;
+    }
+
+    public ServerInfoView getServerInfo() {
+        return serverInfo;
+    }
+
+    public MainAppController getMainAppController() {
+        return mainAppController;
+    }
 
 
     // ------------------------------------------------------------------------
@@ -59,7 +90,7 @@ public class ViewController {
     private void setupClientsList() {
         clientsList = new ClientsConnectedView();
         //clientsList.setPreferredSize(new Dimension(200,600));
-        clientsList.setBounds(10, 150, 400,500);
+        clientsList.setBounds(10, 150, 300,100);
         mainPanel.add(clientsList);
     }
 

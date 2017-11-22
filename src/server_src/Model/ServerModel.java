@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.ServerController;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -16,7 +18,7 @@ public class ServerModel {
     private ServerSocket server;
     private ObjectInputStream dataIn;
     private ObjectOutputStream dataOut;
-    private ArrayList<Socket> clients;
+    private ArrayList<ClientSocketModel> clients;
     private MessageModel receivedData, dataToSend;
 
     // ------------------------------------------------------------------------
@@ -24,8 +26,7 @@ public class ServerModel {
     // ------------------------------------------------------------------------
     public ServerModel() {
         startTheServer();
-        startClientListenerThread();
-        clients = new ArrayList<Socket>();
+        clients = new ArrayList<ClientSocketModel>();
         receivedData = null;
         dataToSend = null;
         this.dataIn = null;
@@ -70,8 +71,7 @@ public class ServerModel {
         }
     }
 
-    private void startClientListenerThread() {
-        Thread waitForClientThread = new Thread(new waitForClient());
+    public void startClientListenerThread(Thread waitForClientThread) {
         waitForClientThread.start();
     }
 
@@ -86,62 +86,56 @@ public class ServerModel {
         return msg;
     }
 
+    private void processReceivedData(MessageModel msg) {
+        // client disconnecting
+        if (msg.isDisconnecting()) {
+            // close client socket
+            // close client input stream
+            // close client output stream
+        }
+    }
+
+
+    public void setDataOut(Socket clientSocket) {
+        try {
+            dataOut = new ObjectOutputStream(clientSocket.getOutputStream());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void setDataIn(Socket clientSocket) {
+        try {
+            dataIn = new ObjectInputStream(clientSocket.getInputStream());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public Socket acceptClient() {
+        Socket newClient = null;
+        try {
+            newClient = server.accept();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return newClient;
+    }
+
+    public void addClient(ClientSocketModel newClientSocketModel) {
+        clients.add(newClientSocketModel);
+    }
+}
+
 
     // ------------------------------------------------------------------------
     // Inner classes
     // ------------------------------------------------------------------------
 
-    //
-    // Class to wait for the client connections
-    //
-    class waitForClient implements Runnable {
-        @Override
-        public void run() {
-            while (true) {
-                Socket tempSocket = new Socket();
-                try {
-                    System.out.println("Waiting..");
-                    tempSocket = server.accept();
-                    processNewClient(tempSocket);
-                    System.out.println("Client port is: " + tempSocket.getLocalPort());
-                } catch (IOException e) {
-                    System.out.println("Error in waiting for client");
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-        }
 
-        //
-        // Set up all the parts and start new thread for new connected client
-        //
-        private void processNewClient(Socket newClientSocket) {
-            clients.add(newClientSocket);
-            setDataOut(newClientSocket);
-            setDataIn(newClientSocket);
-            Thread clientThread = new Thread(new waitForClientData());
-            clientThread.start();
-        }
-
-        private void setDataOut(Socket clientSocket) {
-            try {
-                dataOut = new ObjectOutputStream(clientSocket.getOutputStream());
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-            }
-        }
-
-        private void setDataIn(Socket clientSocket) {
-            try {
-                dataIn = new ObjectInputStream(clientSocket.getInputStream());
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    }
-
+/*
     //
     // Class to wait for the message from the particular client
     //
@@ -153,7 +147,7 @@ public class ServerModel {
 
                 try {
                     receivedData = receiveData();
-                    System.out.println("data received: " + receivedData.getSender());
+                    processReceivedData(receivedData);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     e.printStackTrace();
@@ -162,6 +156,5 @@ public class ServerModel {
         //    }
         }
     }
+        */
 
-
-}

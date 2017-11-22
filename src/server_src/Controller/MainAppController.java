@@ -1,6 +1,5 @@
 package Controller;
 
-import sun.applet.Main;
 
 public class MainAppController {
 
@@ -12,6 +11,5 @@ public class MainAppController {
         serverController = new ServerController();
         viewController = new ViewController();
     }
-
 
 }

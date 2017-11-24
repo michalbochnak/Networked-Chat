@@ -1,8 +1,5 @@
 package ServerModel;
 
-import ClientView.ClientChatView;
-
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -33,7 +30,6 @@ public class ServerModel {
         this.dataIn = null;
         this.dataOut = null;
     }
-
 
     // ------------------------------------------------------------------------
     // Getters
@@ -146,12 +142,15 @@ public class ServerModel {
     private ClientSocketModel findClientByIpAndPort(String ip, int port) {
         int length = clientsSockets.size();
         for (int i = 0; i < length; ++i) {
-            Socket temp = clientsSockets.get(i);
-            System.out.println("here");
-            System.out.println(temp);
-            System.out.println("findClientBy...: port:  " + temp.getPort()
-                    + ", ip: " + temp.getRemoteSocketAddress());
-            if (temp.getPort() == port && temp.getInetAddress().toString().equals(ip)) {
+            Socket temp = clientsSockets.get(i).getClientSocket();
+
+            System.out.println("params:  " + port
+                    + ", ip: " + ip);
+            System.out.println("socket :  " + temp.getPort()
+                    + ", ip: " + temp.getLocalAddress().toString());
+
+            if (temp.getPort() == port && temp.getLocalAddress().toString().equals(ip)) {
+                System.out.println("Found");
                 return clientsSockets.get(i);
             }
         }

@@ -157,8 +157,8 @@ public class ServerController {
             String ip = msg.getIp();
             int port = msg.getPort();
             // set client nickname
-           serverModel.updateClientName(name, ip, port);
-           // update gui list
+            serverModel.updateClientName(name, ip, port);
+            // update gui list
             mainServerController.getViewController().updateClientsList(serverModel.getClientsList());
         }
 

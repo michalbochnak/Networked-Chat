@@ -25,7 +25,7 @@ public class ClientController {
     public void sendInitialInfo() {
         InitialClientInfoMsgModel msg = new InitialClientInfoMsgModel
                 (clientModel.getClientName(),
-                        clientModel.getClientSocket().getInetAddress().getHostAddress(),
+                        clientModel.getClientSocket().getLocalAddress().toString(),
                         clientModel.getClientSocket().getLocalPort());
 
         clientModel.sendData(msg);

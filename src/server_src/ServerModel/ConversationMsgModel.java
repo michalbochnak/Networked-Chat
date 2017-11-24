@@ -1,9 +1,9 @@
-package Model;
+package ServerModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MessageModel implements Serializable {
+public class ConversationMsgModel implements Serializable {
 
     // ------------------------------------------------------------------------
     // Members
@@ -16,7 +16,7 @@ public class MessageModel implements Serializable {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public MessageModel () {
+    public ConversationMsgModel() {
         this.sender = "none";
         this.recipient = "none";
         this.encryptedMsg = new ArrayList<Integer>();

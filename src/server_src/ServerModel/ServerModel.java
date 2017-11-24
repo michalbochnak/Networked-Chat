@@ -1,7 +1,8 @@
-package Model;
+package ServerModel;
 
-import Controller.ServerController;
+import ClientView.ClientChatView;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -18,15 +19,15 @@ public class ServerModel {
     private ServerSocket server;
     private ObjectInputStream dataIn;
     private ObjectOutputStream dataOut;
-    private ArrayList<ClientSocketModel> clients;
-    private MessageModel receivedData, dataToSend;
+    private ArrayList<ClientSocketModel> clientsSockets;
+    private ConversationMsgModel receivedData, dataToSend;
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
     public ServerModel() {
         startTheServer();
-        clients = new ArrayList<ClientSocketModel>();
+        clientsSockets = new ArrayList<ClientSocketModel>();
         receivedData = null;
         dataToSend = null;
         this.dataIn = null;
@@ -52,6 +53,14 @@ public class ServerModel {
         return server.getLocalPort();
     }
 
+    public ArrayList<String> getClientsList() {
+        ArrayList<String> clients = new ArrayList<String>();
+        for (ClientSocketModel csm : clientsSockets) {
+            clients.add(csm.getNickname());
+        }
+        return clients;
+    }
+
 
     // ------------------------------------------------------------------------
     // Setters
@@ -64,7 +73,7 @@ public class ServerModel {
     // ------------------------------------------------------------------------
     private void startTheServer() {
         try {
-            this.server = new ServerSocket(0);
+            this.server = new ServerSocket(50000);
         } catch (IOException e) {
             System.out.println("Cannot create new Server Socket");
             e.printStackTrace();
@@ -75,10 +84,10 @@ public class ServerModel {
         waitForClientThread.start();
     }
 
-    private MessageModel receiveData () {
-        MessageModel msg = null;
+    public ConversationMsgModel receiveData () {
+        ConversationMsgModel msg = null;
         try {
-            msg = (MessageModel)dataIn.readObject();
+            msg = (ConversationMsgModel)dataIn.readObject();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -86,10 +95,10 @@ public class ServerModel {
         return msg;
     }
 
-    private void processReceivedData(MessageModel msg) {
+    private void processReceivedData(ConversationMsgModel msg) {
         // client disconnecting
         if (msg.isDisconnecting()) {
-            // close client socket
+            // close client socketx
             // close client input stream
             // close client output stream
         }
@@ -116,6 +125,7 @@ public class ServerModel {
 
     public Socket acceptClient() {
         Socket newClient = null;
+        System.out.println("in acceptClient");
         try {
             newClient = server.accept();
         } catch (Exception e) {
@@ -124,10 +134,49 @@ public class ServerModel {
         return newClient;
     }
 
-    public void addClient(ClientSocketModel newClientSocketModel) {
-        clients.add(newClientSocketModel);
+    public void updateClientName(String newNickname, String ip, int port) {
+        ClientSocketModel toUpdate = findClientByIpAndPort(ip, port);
+        try {
+            toUpdate.setNickname(newNickname);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
+
+    private ClientSocketModel findClientByIpAndPort(String ip, int port) {
+        int length = clientsSockets.size();
+        for (int i = 0; i < length; ++i) {
+            Socket temp = clientsSockets.get(i);
+            System.out.println("here");
+            System.out.println(temp);
+            System.out.println("findClientBy...: port:  " + temp.getPort()
+                    + ", ip: " + temp.getRemoteSocketAddress());
+            if (temp.getPort() == port && temp.getInetAddress().toString().equals(ip)) {
+                return clientsSockets.get(i);
+            }
+        }
+        return null;
+    }
+
+    //
+    // Removes the client from clientsSockets and return the nickname
+    // of the client that was removed
+    //
+    public String removeClient(Socket socket) {
+        int length = clientsSockets.size();
+        for (int i = 0; i < length; ++i) {
+            if (clientsSockets.get(i).getClientSocket() == socket) {
+                String clientName = clientsSockets.get(i).getNickname();
+                clientsSockets.remove(i);
+                return clientName;
+            }
+        }
+        return null;    // not found
+    }
+
+    public void addClient(ClientSocketModel newClientSocketModel) {
+        clientsSockets.add(newClientSocketModel);
+    }
 
 
     // ------------------------------------------------------------------------
@@ -135,26 +184,10 @@ public class ServerModel {
     // ------------------------------------------------------------------------
 
 
-/*
-    //
-    // Class to wait for the message from the particular client
-    //
-    class waitForClientData implements Runnable {
-        @Override
-        public void run () {
+}
 
-          //  while (true) {
 
-                try {
-                    receivedData = receiveData();
-                    processReceivedData(receivedData);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
-                }
 
-        //    }
-        }
-    }
-        */
+
+
 

@@ -1,12 +1,12 @@
-package View;
+package ServerView;
 
 import javax.swing.*;
 
-public class MenuBarV extends JMenuBar{
+public class MenuBarView extends  JMenuBar {
 
     private JMenu FileMenu, HelpMenu;
 
-    public MenuBarV() {
+    public MenuBarView() {
         setupFileMenu();
         setupHelpMenu();
     }
@@ -23,5 +23,4 @@ public class MenuBarV extends JMenuBar{
         HelpMenu.add(new JMenuItem("About"));
         this.add(HelpMenu);
     }
-
 }

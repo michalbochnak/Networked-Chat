@@ -13,7 +13,7 @@
 // Class description...
 //
 
-package Model;
+package ServerModel;
 
 import java.math.BigInteger;
 

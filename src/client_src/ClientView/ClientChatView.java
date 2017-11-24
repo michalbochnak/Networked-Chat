@@ -1,14 +1,14 @@
-package Controller;
+package ClientView;
 
-import View.*;
-import sun.applet.Main;
+import ServerController.MainServerController;
+import ServerView.ClientsConnectedView;
+import ServerView.MenuBarView;
+import ServerView.ServerInfoView;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewController {
-
-
+public class ClientChatView extends JPanel {
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -16,23 +16,20 @@ public class ViewController {
     private JPanel mainPanel;
     private JLabel clientsListHeader;
     private ClientsConnectedView clientsList;
-    private MenuBarView menuBar;
-    private ServerInfoView serverInfo;
-    private MainAppController mainAppController;
+    private ServerView.MenuBarView menuBar;
+    private ServerView.ServerInfoView serverInfo;
 
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
 
-    public ViewController(MainAppController mainAppController) {
-        this.mainAppController = mainAppController;
+    public ClientChatView() {
         setupFrame();
         setupMenuBar();
         setupMainPanel();
         setupServerInfo();
         setupClientsList();
-        frame.setVisible(true);
     }
 
     // ------------------------------------------------------------------------
@@ -47,26 +44,17 @@ public class ViewController {
         return mainPanel;
     }
 
-    public JLabel getClientsListHeader() {
-        return clientsListHeader;
-    }
-
     public ClientsConnectedView getClientsList() {
         return clientsList;
     }
 
-    public MenuBarView getMenuBar() {
+    public ServerView.MenuBarView getMenuBar() {
         return menuBar;
     }
 
-    public ServerInfoView getServerInfo() {
+    public ServerView.ServerInfoView getServerInfo() {
         return serverInfo;
     }
-
-    public MainAppController getMainAppController() {
-        return mainAppController;
-    }
-
 
     // ------------------------------------------------------------------------
     // Setters
@@ -79,10 +67,10 @@ public class ViewController {
     // ------------------------------------------------------------------------
 
     private void setupFrame() {
-        frame = new JFrame("Chat Server");
+        frame = new JFrame("Chat Client");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //frame.setLayout(new BorderLayout());
-        frame.setSize(750, 750);
+        frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
         //frame.setResizable(false);
     }
@@ -98,13 +86,13 @@ public class ViewController {
         mainPanel = new JPanel();
         mainPanel.setLayout(null);
         //mainPanel.setBounds(100, 100, 300, 300);
-        mainPanel.setBackground(Color.pink);
+        mainPanel.setBackground(Color.yellow);
         frame.add(mainPanel, BorderLayout.CENTER);
     }
 
     private void setupServerInfo() {
-        serverInfo = new ServerInfoView("none", "none");
-        serverInfo.setBounds(10, 10, 400, 100);
+        serverInfo = new ServerInfoView("-", "-");
+        serverInfo.setBounds(10, 10, 300, 70);
         mainPanel.add(serverInfo);
     }
 

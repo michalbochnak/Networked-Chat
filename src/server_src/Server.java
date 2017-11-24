@@ -1,17 +1,12 @@
 
-import Controller.MainAppController;
-import Controller.ServerController;
-
-
-
-
+import ServerController.MainServerController;
 
 
 public class Server {
 
     public static void main(String args[]) {
 
-        MainAppController mainAppController = new MainAppController();
+        MainServerController mainServerController = new MainServerController();
 
     }
 

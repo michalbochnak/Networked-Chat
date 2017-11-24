@@ -1,14 +1,14 @@
-package Controller;
+package ServerController;
 
 
-public class MainAppController {
+public class MainServerController {
 
     private ServerController serverController;
     private ViewController viewController;
 
 
     // constructor
-    public MainAppController() {
+    public MainServerController() {
         serverController = new ServerController(this);
         viewController = new ViewController(this);
 

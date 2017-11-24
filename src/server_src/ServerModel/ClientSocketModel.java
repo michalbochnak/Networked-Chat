@@ -1,56 +1,42 @@
-package Model;
+package ServerModel;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.net.Socket;
 
-public class MessageM implements Serializable {
+public class ClientSocketModel extends Socket{
 
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
-    private String sender;
-    private ArrayList<Integer> encryptedMsg;
-    private String recipient;
+    private String nickname;
+    private Socket clientSocket;
+
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public MessageM() {
-        this.sender = "none";
-        this.recipient = "none";
-        this.encryptedMsg = new ArrayList<Integer>();
+    public ClientSocketModel (Socket newClientSocket) {
+        this.nickname = newClientSocket.getRemoteSocketAddress().toString();
+        this.clientSocket = newClientSocket;
     }
 
 
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
-    public String getSender() {
-        return sender;
+    public String getNickname() {
+        return nickname;
     }
 
-    public ArrayList<Integer> getEncryptedMsg() {
-        return encryptedMsg;
-    }
-
-    public String getRecipient() {
-        return recipient;
+    public Socket getClientSocket() {
+        return clientSocket;
     }
 
 
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public void setEncryptedMsg(ArrayList<Integer> encryptedMsg) {
-        this.encryptedMsg = encryptedMsg;
-    }
-
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
 

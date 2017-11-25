@@ -77,18 +77,18 @@ public class ServerController {
         }
     }
 
-    private void sendUpdateToClient(ClientSocketModel csm, ArrayList<String> clientsList) {
-        System.out.println("Sending update to: " + csm.getNickname());
-        try {
-            UpdateMsgModel msg = new UpdateMsgModel(clientsList);
-            ObjectOutputStream dataOut = csm.getDataOut();
-            dataOut.writeObject(msg);
-            dataOut.flush();
-            dataOut.reset();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void sendUpdateToClient(ClientSocketModel csm, ArrayList<String> clientsList) {
+//        System.out.println("Sending update to: " + csm.getNickname());
+//        try {
+//            UpdateMsgModel msg = new UpdateMsgModel(clientsList);
+//            ObjectOutputStream dataOut = csm.getDataOut();
+//            dataOut.writeObject(msg);
+//            dataOut.flush();
+//            dataOut.reset();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void sendMessageToClient(ClientSocketModel csm, Object data) {
         System.out.println("Sending message to " + csm.getNickname());
@@ -168,13 +168,17 @@ public class ServerController {
             String ip = msg.getIp();
             int port = msg.getPort();
             // set client nickname
-            serverModel.updateClientName(name, ip, port);
+            serverModel.updateClientInfo(name, ip, port);
             // update gui list
             mainServerController.getViewController().updateClientsList(serverModel.getClientsList());
         }
 */
         private void processConversationMsg(Object data) {
             ConversationMsgModel msg = (ConversationMsgModel)data;
+            ClientSocketModel recipient = serverModel.findRecipientSocket(msg.getRecipient());
+            // forward message
+            System.out.println("Forwarding msg to " + msg.getRecipient());
+            sendMessageToClient(recipient, msg);
         }
 
         private void processInitialMsg(Object data) {
@@ -187,8 +191,8 @@ public class ServerController {
             }
             else {
                 // associate client name with socket
-                serverModel.updateClientName(msg.getNickname(), msg.getIp(), msg.getPort());
-                mainServerController.getViewController().updateClientsList(serverModel.getClientsList());
+                serverModel.updateClientInfo(msg);
+                mainServerController.getViewController().updateClientsList(serverModel.getClientsNamesList());
                 // sent true back
                 msg.setNameAvailable(true);
                 // send response

@@ -14,8 +14,8 @@ public class ServerModel {
     // Members
     // ------------------------------------------------------------------------
     private ServerSocket server;
-    private ObjectInputStream dataIn;
-    private ObjectOutputStream dataOut;
+   // private ObjectInputStream dataIn;
+   // private ObjectOutputStream dataOut;
     private ArrayList<ClientSocketModel> clientsSockets;
     private ConversationMsgModel receivedData, dataToSend;
 
@@ -27,8 +27,8 @@ public class ServerModel {
         clientsSockets = new ArrayList<ClientSocketModel>();
         receivedData = null;
         dataToSend = null;
-        this.dataIn = null;
-        this.dataOut = null;
+     //   this.dataIn = null;
+      //  this.dataOut = null;
     }
 
     // ------------------------------------------------------------------------
@@ -49,16 +49,24 @@ public class ServerModel {
         return server.getLocalPort();
     }
 
-    public ArrayList<String> getClientsList() {
-        ArrayList<String> clients = new ArrayList<String>();
+    public ArrayList<ClientPublicProfile> getClientsList() {
+        ArrayList<ClientPublicProfile> clients = new ArrayList<ClientPublicProfile>();
         for (ClientSocketModel csm : clientsSockets) {
-            clients.add(csm.getNickname());
+            clients.add(new ClientPublicProfile(csm.getNickname(), csm.getPublicKey()));
         }
         return clients;
     }
 
     public ArrayList<ClientSocketModel> getClientsSocketArray() {
         return clientsSockets;
+    }
+
+    public ArrayList<String> getClientsNamesList() {
+        ArrayList<String> clients = new ArrayList<String>();
+        for (ClientSocketModel csm : clientsSockets) {
+            clients.add(csm.getNickname());
+        }
+        return clients;
     }
 
 
@@ -84,16 +92,16 @@ public class ServerModel {
         waitForClientThread.start();
     }
 
-    public ConversationMsgModel receiveData () {
-        ConversationMsgModel msg = null;
-        try {
-            msg = (ConversationMsgModel)dataIn.readObject();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return msg;
-    }
+//    public ConversationMsgModel receiveData () {
+//        ConversationMsgModel msg = null;
+//        try {
+//            msg = (ConversationMsgModel)dataIn.readObject();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//        }
+//        return msg;
+//    }
 
   //  private void processReceivedData(ConversationMsgModel msg) {
         // client disconnecting
@@ -104,23 +112,23 @@ public class ServerModel {
     //    }
  //   }
 
-    public void setDataOut(Socket clientSocket) {
-        try {
-            dataOut = new ObjectOutputStream(clientSocket.getOutputStream());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public void setDataIn(Socket clientSocket) {
-        try {
-            dataIn = new ObjectInputStream(clientSocket.getInputStream());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
+//    public void setDataOut(Socket clientSocket) {
+//        try {
+//            dataOut = new ObjectOutputStream(clientSocket.getOutputStream());
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public void setDataIn(Socket clientSocket) {
+//        try {
+//            dataIn = new ObjectInputStream(clientSocket.getInputStream());
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
 
     public Socket acceptClient() {
         Socket newClient = null;
@@ -133,10 +141,11 @@ public class ServerModel {
         return newClient;
     }
 
-    public void updateClientName(String newNickname, String ip, int port) {
-        ClientSocketModel toUpdate = findClientByIpAndPort(ip, port);
+    public void updateClientInfo(InitialClientInfoMsgModel msg) {
+        ClientSocketModel toUpdate = findClientByIpAndPort(msg.getIp(), msg.getPort());
         try {
-            toUpdate.setNickname(newNickname);
+            toUpdate.setNickname(msg.getNickname());
+            toUpdate.setPublicKey(msg.getPublicKey());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -166,6 +175,15 @@ public class ServerModel {
                 return true;    // found
         }
         return false;           // not found
+    }
+
+    public ClientSocketModel findRecipientSocket(String name) {
+        for (ClientSocketModel csm : clientsSockets) {
+            if (csm.getNickname().equals(name)) {
+                return csm;
+            }
+        }
+        return null;
     }
 
     //

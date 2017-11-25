@@ -10,6 +10,8 @@ public class RSAModel{
     public RSAModel() {
         this.message = new ArrayList<>();
     }
+
+
     //encode message using RSA
     public ArrayList encrypt(String message, int e, int n) {
 
@@ -17,6 +19,7 @@ public class RSAModel{
         ArrayList<Integer> asciiValue = convertToAscii(msg);
         ArrayList<Integer> fourCharacters = calculateFourChars(asciiValue);
         ArrayList<Integer> encrypted = encodeMsg(fourCharacters, e, n);
+
         return encrypted;
     }
 

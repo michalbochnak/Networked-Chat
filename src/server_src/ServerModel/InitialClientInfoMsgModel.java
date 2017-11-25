@@ -1,5 +1,7 @@
 package ServerModel;
 
+import ClientModel.KeyPair;
+
 import java.io.Serializable;
 
 public class InitialClientInfoMsgModel implements Serializable {
@@ -8,13 +10,15 @@ public class InitialClientInfoMsgModel implements Serializable {
     private String ip;
     private int port;
     private boolean nameAvailable;
-    // FIXME: add public key here
+    private KeyPair publicKey;
 
-    public InitialClientInfoMsgModel (String nickname, String ip, int port, boolean nameAvailable) {
+    public InitialClientInfoMsgModel (String nickname, String ip, int port, boolean nameAvailable,
+                                      KeyPair publicKey) {
         this.nickname = nickname;
         this.ip = ip;
         this.port = port;
         this.nameAvailable = nameAvailable;
+        this.publicKey = publicKey;
     }
 
     public String getNickname() {
@@ -27,6 +31,10 @@ public class InitialClientInfoMsgModel implements Serializable {
 
     public int getPort() {
         return port;
+    }
+
+    public KeyPair getPublicKey() {
+        return publicKey;
     }
 
     public boolean isNameAvailable() {

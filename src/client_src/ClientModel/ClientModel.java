@@ -15,6 +15,7 @@ public class ClientModel {
     private Socket clientSocket;
     private ObjectInputStream dataIn;
     private ObjectOutputStream dataOut;
+    private KeyPair publicKey;
 
 
     // ------------------------------------------------------------------------
@@ -25,6 +26,7 @@ public class ClientModel {
         clientSocket = null;
         dataOut = null;
         dataIn = null;
+        publicKey = null;
     }
 
     public ClientModel(String serverIp, int serverPort) {
@@ -48,6 +50,7 @@ public class ClientModel {
     public ObjectInputStream getDataIn() {
         return dataIn;
     }
+
 
     // ------------------------------------------------------------------------
     // Setters

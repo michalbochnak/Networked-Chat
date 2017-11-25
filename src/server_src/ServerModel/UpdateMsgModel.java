@@ -5,14 +5,13 @@ import java.util.ArrayList;
 
 public class UpdateMsgModel implements Serializable {
 
-    ArrayList<String> clientsList;
+    ArrayList<ClientPublicProfile> clientsList;
 
-
-    public UpdateMsgModel(ArrayList<String> list) {
+    public UpdateMsgModel(ArrayList<ClientPublicProfile> list) {
         clientsList = list;
     }
 
-    public ArrayList<String> getClientsList() {
+    public ArrayList<ClientPublicProfile> getClientsList() {
         return clientsList;
     }
 }

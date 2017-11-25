@@ -1,5 +1,7 @@
 package ServerModel;
 
+import ClientModel.KeyPair;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -11,6 +13,7 @@ public class ClientSocketModel extends Socket{
     // ------------------------------------------------------------------------
     private Socket clientSocket;
     private String nickname;
+    private KeyPair publicKey;
     private ObjectOutputStream dataOut;
     private  ObjectInputStream dataIn;
 
@@ -27,6 +30,7 @@ public class ClientSocketModel extends Socket{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        publicKey = null;
     }
 
 
@@ -49,6 +53,10 @@ public class ClientSocketModel extends Socket{
         return dataIn;
     }
 
+    public KeyPair getPublicKey() {
+        return publicKey;
+    }
+
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
@@ -56,6 +64,9 @@ public class ClientSocketModel extends Socket{
         this.nickname = nickname;
     }
 
+    public void setPublicKey(KeyPair publicKey) {
+        this.publicKey = publicKey;
+    }
 
     // ------------------------------------------------------------------------
     // Methods

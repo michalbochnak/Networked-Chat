@@ -2,11 +2,18 @@ package ClientModel;
 
 import java.math.BigInteger;
 
-public class Keys {
-    private int E;
-    private int N;
-    private int D;
+public class KeysModel {
 
+    private int E;
+    private int D;
+    private int N;
+
+
+    public KeysModel(int p, int q){
+        this.N = calculateN(p, q);
+        this.E = calculateE(p, q);
+        this.D = calculateD(this.E, p, q);
+    }
 
     public int getE() {
         return E;
@@ -20,12 +27,6 @@ public class Keys {
         return D;
     }
 
-
-    public Keys (int p, int q){
-        this.N = calculateN(p,q);
-        this.E = calculateE(p,q);
-        this.D = calculateD(this.E, p, q);
-    }
 
 
     private int calculateD(int e, int p, int q) {

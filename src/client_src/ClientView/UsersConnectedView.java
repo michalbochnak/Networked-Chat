@@ -16,6 +16,7 @@ public class UsersConnectedView extends JPanel {
     private JLabel header;
     private JScrollPane usersListScrollPane;
     private DefaultListModel usersList;
+    private JList list;
 
     // ------------------------------------------------------------------------
     // Constructors
@@ -27,6 +28,7 @@ public class UsersConnectedView extends JPanel {
         this.setBackground(Color.YELLOW);
         this.setLayout(new BorderLayout());
         this.usersList = new DefaultListModel();
+        this.list = new JList();
 
         //setupMainPanel();
         setupHeader();
@@ -66,7 +68,7 @@ public class UsersConnectedView extends JPanel {
 
     public void addClient(String id) {
         this.usersList.addElement(id);
-        JList list = new JList(usersList);
+        this.list = new JList(usersList);
         usersListScrollPane.setViewportView(list);
     }
 
@@ -77,7 +79,7 @@ public class UsersConnectedView extends JPanel {
 
     public void clear() {
         this.usersList.clear();
-        JList list = new JList(usersList);
+        this.list = new JList(usersList);
         usersListScrollPane.setViewportView(list);
     }
 
@@ -85,7 +87,15 @@ public class UsersConnectedView extends JPanel {
         for (String name : clients) {
             this.usersList.addElement(name);
         }
-        JList list = new JList(usersList);
+        this.list = new JList(usersList);
         this.usersListScrollPane.setViewportView(list);
+    }
+
+    public String getSelected() {
+        int index = list.getSelectedIndex();
+        if ( index == -1 )
+            return "none";
+        else
+            return (String)usersList.get(index);
     }
 }

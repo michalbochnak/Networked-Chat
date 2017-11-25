@@ -3,7 +3,6 @@ package ServerView;
 import javax.swing.*;
 import java.awt.*;
 
-
 //
 // Class contains two labels that will hold information about the
 // the server IP address and port that server is listening on

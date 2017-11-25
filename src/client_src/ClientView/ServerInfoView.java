@@ -22,7 +22,7 @@ public class ServerInfoView {
         setupTextFields();
         setupOkButton();
 
-        serverInfoFrame.setVisible(true);
+//        serverInfoFrame.setVisible(false);
     }
 
     // ------------------------------------------------------------------------

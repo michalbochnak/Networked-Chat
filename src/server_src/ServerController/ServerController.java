@@ -1,6 +1,6 @@
 package ServerController;
-import ServerModel.*;
 
+import ServerModel.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -59,8 +59,8 @@ public class ServerController {
     }
 
     // FIXME: impl
-    private void processDisconnectedClient(Socket socket) {
-        removeClientSocketFromServerList(socket);
+    private void processDisconnectedClient(ClientSocketModel socket) {
+        removeClientSocketFromServerList(socket.getClientSocket());
         sendUpdateToAllClients();
     }
 
@@ -71,9 +71,9 @@ public class ServerController {
     }
 
     private void sendUpdateToAllClients() {
-        ArrayList<String> clientsList = serverModel.getClientsList();
+        UpdateMsgModel msg = new UpdateMsgModel(serverModel.getClientsList());
         for (ClientSocketModel csm: serverModel.getClientsSocketArray()) {
-            sendUpdateToClient(csm, clientsList);
+            sendMessageToClient(csm, msg);
         }
     }
 
@@ -90,6 +90,17 @@ public class ServerController {
         }
     }
 
+    private void sendMessageToClient(ClientSocketModel csm, Object data) {
+        System.out.println("Sending message to " + csm.getNickname());
+        try {
+            csm.getDataOut().writeObject(data);
+            csm.getDataOut().flush();
+            csm.getDataOut().reset();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // ------------------------------------------------------------------------
     // Inner classes
     // ------------------------------------------------------------------------
@@ -101,11 +112,8 @@ public class ServerController {
         @Override
         public void run() {
             while (true) {
-                System.out.println("Waiting..");
                 Socket tempSocket = serverModel.acceptClient();
-                System.out.println("after AcceptClient");
                 processNewClient(tempSocket);
-                System.out.println("Client port is: " + tempSocket.getLocalPort());
             }
         }
     }
@@ -115,15 +123,15 @@ public class ServerController {
     //
     class waitForClientData implements Runnable {
 
-        private Socket clientSocket;
+        private ClientSocketModel clientSocket;
         private ObjectInputStream dataIn;
         private ObjectOutputStream dataOut;
         private Object data;
 
         public waitForClientData(ClientSocketModel csm) {
-            clientSocket = csm.getClientSocket();
+            clientSocket = csm;
             dataOut = csm.getDataOut();
-            // to allow the client to establish data in stream
+            // flush to allow the client to establish data in stream
             try {
                 dataOut.flush();
             } catch (IOException e) {
@@ -147,14 +155,13 @@ public class ServerController {
             switch (className) {
                 case "InitialClientInfoMsgModel":
                     processInitialMsg(data);
-                    sendUpdateToAllClients();
                     break;
                 case "ConversationMsgModel":
                     processConversationMsg(data);
                     break;
             }
         }
-
+/*
         private void processInitialMsg(Object data) {
             InitialClientInfoMsgModel msg = (InitialClientInfoMsgModel)data;
             String name = msg.getNickname();
@@ -165,16 +172,36 @@ public class ServerController {
             // update gui list
             mainServerController.getViewController().updateClientsList(serverModel.getClientsList());
         }
-
+*/
         private void processConversationMsg(Object data) {
             ConversationMsgModel msg = (ConversationMsgModel)data;
         }
 
+        private void processInitialMsg(Object data) {
+            System.out.println("In processInitialMsg ");
+            InitialClientInfoMsgModel msg = (InitialClientInfoMsgModel)data;
+            if (mainServerController.getServerController().serverModel.clientExist(msg.getNickname())) {
+                // respond to client that client name is not available
+                msg.setNameAvailable(false);
+                sendMessageToClient(clientSocket, msg);
+            }
+            else {
+                // associate client name with socket
+                serverModel.updateClientName(msg.getNickname(), msg.getIp(), msg.getPort());
+                mainServerController.getViewController().updateClientsList(serverModel.getClientsList());
+                // sent true back
+                msg.setNameAvailable(true);
+                // send response
+                sendMessageToClient(clientSocket, msg);
+                // send update to all clients
+                sendUpdateToAllClients();
+                System.out.println("Done...");
+            }
+        }
+
         @Override
         public void run () {
-
             while (true) {
-
                 try {
                    data = receiveData();
                    processReceivedData(data);
@@ -184,7 +211,6 @@ public class ServerController {
                     processDisconnectedClient(clientSocket);
                     break;  // client disconnected
                 }
-
             }
         }
     }

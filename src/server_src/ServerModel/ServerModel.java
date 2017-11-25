@@ -95,14 +95,14 @@ public class ServerModel {
         return msg;
     }
 
-    private void processReceivedData(ConversationMsgModel msg) {
+  //  private void processReceivedData(ConversationMsgModel msg) {
         // client disconnecting
-        if (msg.isDisconnecting()) {
+    //    if (msg.isDisconnecting()) {
             // close client socketx
             // close client input stream
             // close client output stream
-        }
-    }
+    //    }
+ //   }
 
     public void setDataOut(Socket clientSocket) {
         try {
@@ -158,6 +158,14 @@ public class ServerModel {
             }
         }
         return null;
+    }
+
+    public boolean clientExist(String name) {
+        for (ClientSocketModel csm : clientsSockets) {
+            if (csm.getNickname().equals(name))
+                return true;    // found
+        }
+        return false;           // not found
     }
 
     //

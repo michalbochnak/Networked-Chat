@@ -1,11 +1,4 @@
-
-
-
-
 import ClientController.MainClientController;
-import ClientModel.*;
-import ServerModel.*;
-
 
 public class Client {
 

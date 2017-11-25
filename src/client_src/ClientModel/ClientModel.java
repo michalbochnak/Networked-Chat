@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import ServerModel.*;
 
 
 public class ClientModel {
@@ -128,6 +127,16 @@ public class ClientModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Object receiveData() {
+        Object data = null;
+        try {
+            data =  this.getDataIn().readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data;
     }
 
 

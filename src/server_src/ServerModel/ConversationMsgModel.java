@@ -9,9 +9,9 @@ public class ConversationMsgModel implements Serializable {
     // Members
     // ------------------------------------------------------------------------
     private String sender;
-    private ArrayList<Integer> encryptedMsg;
     private String recipient;
-    private boolean disconnecting;
+    private ArrayList<Integer> encryptedMsg;
+//    private boolean disconnecting;
 
     // ------------------------------------------------------------------------
     // Constructors
@@ -20,7 +20,7 @@ public class ConversationMsgModel implements Serializable {
         this.sender = "none";
         this.recipient = "none";
         this.encryptedMsg = new ArrayList<Integer>();
-        this.disconnecting = false;
+//        this.disconnecting = false;
     }
 
 
@@ -39,9 +39,9 @@ public class ConversationMsgModel implements Serializable {
         return recipient;
     }
 
-    public boolean isDisconnecting() {
-        return this.disconnecting;
-    }
+//    public boolean isDisconnecting() {
+//        return this.disconnecting;
+//    }
 
 
     // ------------------------------------------------------------------------

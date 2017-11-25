@@ -20,8 +20,8 @@ public class ViewController {
 
     //
     // Displays requested by parameter window
-    // 1 - name prompt
-    // 2 - server ip and port prompt
+    // 1 - server ip and port prompt
+    // 2 - name prompt
     // 3 - main chat window
     //
     public ViewController(MainClientController mcc) {
@@ -32,10 +32,10 @@ public class ViewController {
 
         switch (mcc.getChatStage()) {
             case 1:
-                showNamePrompt();
+                showServerInfoPrompt();
                 break;
             case 2:
-                showServerInfoPrompt();
+                showNamePrompt();
                 break;
             case 3:
                 showMainChatWindow();
@@ -78,13 +78,6 @@ public class ViewController {
                 "Server information incorrect", JOptionPane.PLAIN_MESSAGE);
     }
 
-    private void showNameErrorDialog() {
-        JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
-                "Name must be at least 1 letter and\n" +
-                        "no more than 15 letters",
-                "Name format incorrect", JOptionPane.PLAIN_MESSAGE);
-    }
-
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
@@ -96,18 +89,48 @@ public class ViewController {
     // Inner classes
     // ------------------------------------------------------------------------
     public class NameViewOkButtonListener implements ActionListener {
+
+        private void showNameTooLongDialog() {
+            JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
+                    "Name must be at least 1 letter and\n" +
+                            "no more than 20 letters",
+                    "Name format incorrect", JOptionPane.PLAIN_MESSAGE);
+        }
+
+        private void showNameTakenDialog() {
+            JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
+                    "Name you entered is already taken by the other chat user.\n" +
+                            "Please, use different nickname",
+                    "Name format incorrect", JOptionPane.PLAIN_MESSAGE);
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
             String name = nameView.getNameTextField().getText();
-            if (name.length() <= 0 || name.length() > 15) {
-                showNameErrorDialog();
+            if (nameLengthValid(name)) {
+                showNameTooLongDialog();
+            }
+            else if (!nameAlreadyTaken(name)) {
+                showNameTakenDialog();
             }
             else {
-                mainClientController.setChatStage(2);
-                showServerInfoPrompt();
-                mainClientController.getClientController().getClientModel().
-                        setClientName(name);
+                mainClientController.setChatStage(3);
+                showMainChatWindow();
+                mainClientController.getClientController().startThreadForDataReceiving();
+               // mainClientController.getClientController().getClientModel().
+              //          setClientName(name);
+              //  mainClientController.getClientController().sendInitialInfo();
             }
+        }
+
+        private boolean nameLengthValid(String name) {
+            return (name.length() <= 0) || (name.length() >= 20);
+        }
+
+        // Checks with the server if name choosen is not taken
+        private boolean nameAlreadyTaken(String name) {
+            return mainClientController.getClientController().usernameAvailable(name);
+
         }
     }
 
@@ -115,26 +138,17 @@ public class ViewController {
     public class ServerInfoViewOkButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("-3");
             String ip = serverInfoView.getIpTextField().getText();
-            System.out.println("-2");
             int port = Integer.parseInt(serverInfoView.getPortTextField().getText());
-            System.out.println("-1");
             // connection error
             if (!mainClientController.getClientController().connectToServer
                     (ip, port)) {
-                System.out.println("0");
                 showServerInfoErrorDialog();
             }
             // connection succesful
             else {
-                mainClientController.setChatStage(3);
-                System.out.println("1");
-                mainClientController.getClientController().sendInitialInfo();
-                System.out.println("2");
-                showMainChatWindow();
-                System.out.println("3");
-                mainClientController.getClientController().startThreadForDataReceiving();
+                mainClientController.setChatStage(2);
+                showNamePrompt();
             }
         }
     }

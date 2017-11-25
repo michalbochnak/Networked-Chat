@@ -22,7 +22,7 @@ public class NameView {
         setupNameTextField();
         setupOkButton();
 
-        enterNameFrame.setVisible(true);
+//        enterNameFrame.setVisible(true);
     }
 
     // ------------------------------------------------------------------------

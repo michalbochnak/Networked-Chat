@@ -1,10 +1,7 @@
 package ClientView;
 
-import ServerController.MainServerController;
-import ServerView.ClientsConnectedView;
 import ServerView.MenuBarView;
 import ServerView.ServerInfoView;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,6 +28,8 @@ public class ClientChatView extends JPanel {
         setupMainPanel();
         setupServerInfo();
         setupClientsList();
+
+        frame.setVisible(false);
     }
 
     // ------------------------------------------------------------------------

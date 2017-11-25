@@ -66,9 +66,9 @@ public class ClientModel {
     // ------------------------------------------------------------------------
     public boolean connectToServer(String serverIp, int serverPort) {
         try {
-        clientSocket = new Socket(serverIp, serverPort);
-        setupInOutStream();
-        return true;
+            clientSocket = new Socket(serverIp, serverPort);
+            setupInOutStream();
+            return true;
         } catch (Exception e) {
             System.out.println("Failed");
             e.printStackTrace();
@@ -135,13 +135,24 @@ public class ClientModel {
     public Object receiveData() {
         Object data = null;
         try {
-            data =  this.getDataIn().readObject();
+            data = this.getDataIn().readObject();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return data;
     }
 
+    //checks if number is prime
+    private boolean isPrime(int n) {
+        if(n<=1){
+            return  false;
+        }
+        for (int i = 2; i < n; i++)
+            if (n % i == 0)
+                return false;
+
+        return true;
+    }
 
     // ------------------------------------------------------------------------
     // Inner classes

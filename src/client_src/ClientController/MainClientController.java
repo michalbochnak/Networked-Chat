@@ -22,8 +22,11 @@ public class MainClientController {
         this.chatStage = chatStage;
     }
 
-
     public ClientController getClientController() {
         return  clientController;
+    }
+
+    public ViewController getViewController() {
+        return viewController;
     }
 }

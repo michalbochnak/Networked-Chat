@@ -46,6 +46,9 @@ public class ClientModel {
         return clientSocket;
     }
 
+    public ObjectInputStream getDataIn() {
+        return dataIn;
+    }
 
     // ------------------------------------------------------------------------
     // Setters

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e67326bf-9637-4a1f-8efb-d567d4ffa804" name="Default" comment="Initial commit">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server_src/ServerModel/UpdateMsgModel.java" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Controller/MainAppController.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Controller/ServerController$waitForClientData.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Controller/ServerController.class" afterPath="" />
@@ -17,7 +18,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Server.class" afterPath="$PROJECT_DIR$/out/production/CS 342 Project 05 - Networked Chat/Server.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/ClientController/ClientController.java" afterPath="$PROJECT_DIR$/src/client_src/ClientController/ClientController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/ClientController/MainClientController.java" afterPath="$PROJECT_DIR$/src/client_src/ClientController/MainClientController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/ClientController/ViewController.java" afterPath="$PROJECT_DIR$/src/client_src/ClientController/ViewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java" afterPath="$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/ClientView/ClientChatView.java" afterPath="$PROJECT_DIR$/src/client_src/ClientView/ClientChatView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client_src/ClientView/UsersConnectedView.java" afterPath="$PROJECT_DIR$/src/client_src/ClientView/UsersConnectedView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server_src/ServerController/ServerController.java" afterPath="$PROJECT_DIR$/src/server_src/ServerController/ServerController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server_src/ServerModel/ClientSocketModel.java" afterPath="$PROJECT_DIR$/src/server_src/ServerModel/ClientSocketModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java" afterPath="$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -39,25 +46,32 @@
             <splitter split-orientation="vertical" split-proportion="0.7832031">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="ClientSocketModel.java" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="ClientSocketModel.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ClientSocketModel.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="174">
-                          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+                        <state relative-caret-position="323">
+                          <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
                           <folding>
-                            <element signature="e#1236#1237#0" expanded="true" />
-                            <element signature="e#1276#1277#0" expanded="true" />
+                            <element signature="imports" expanded="true" />
+                            <element signature="e#1464#1465#0" expanded="true" />
+                            <element signature="e#1494#1495#0" expanded="true" />
+                            <element signature="e#1567#1568#0" expanded="true" />
+                            <element signature="e#1790#1791#0" expanded="true" />
+                            <element signature="e#1830#1831#0" expanded="true" />
                           </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="MenuBarView.java" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/src/server_src/ServerView/MenuBarView.java">
+                  <file leaf-file-name="MainClientController.java" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/MainClientController.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="340">
-                          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-                          <folding />
+                        <state relative-caret-position="102">
+                          <caret line="6" column="35" lean-forward="false" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+                          <folding>
+                            <element signature="e#664#665#0" expanded="true" />
+                            <element signature="e#701#702#0" expanded="true" />
+                          </folding>
                         </state>
                       </provider>
                     </entry>
@@ -65,8 +79,8 @@
                   <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/ViewController.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="269">
-                          <caret line="126" column="50" lean-forward="true" selection-start-line="126" selection-start-column="50" selection-end-line="126" selection-end-column="50" />
+                        <state relative-caret-position="243">
+                          <caret line="124" column="33" lean-forward="false" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="33" />
                           <folding>
                             <element signature="imports" expanded="true" />
                             <element signature="e#1276#1277#0" expanded="true" />
@@ -90,23 +104,28 @@
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="ServerInfoView.java" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/src/server_src/ServerView/ServerInfoView.java">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="99">
-                          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
                   <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ViewController.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="179">
-                          <caret line="110" column="5" lean-forward="false" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+                        <state relative-caret-position="799">
+                          <caret line="142" column="37" lean-forward="false" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
                           <folding>
-                            <element signature="imports" expanded="true" />
+                            <element signature="e#381#456#0" expanded="false" />
+                            <element signature="method#ViewController#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#showNamePrompt#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#showServerInfoPrompt#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#showMainChatWindow#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#hideAllWindows#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#setupNameView#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#showServerInfoErrorDialog#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#showNameErrorDialog#0;class#ViewController#0" expanded="false" />
+                            <element signature="n#!!doc;n#NameViewOkButtonListener#0;n#ViewController#0" expanded="false" />
+                            <element signature="class#NameViewOkButtonListener#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#actionPerformed#0;class#NameViewOkButtonListener#0;class#ViewController#0" expanded="false" />
+                            <element signature="class#ServerInfoViewOkButtonListener#0;class#ViewController#0" expanded="false" />
+                            <element signature="method#actionPerformed#0;class#ServerInfoViewOkButtonListener#0;class#ViewController#0" expanded="false" />
+                            <element signature="e#4822#4823#0" expanded="true" />
+                            <element signature="e#4884#4885#0" expanded="true" />
                           </folding>
                         </state>
                       </provider>
@@ -115,25 +134,59 @@
                   <file leaf-file-name="ClientModel.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-629">
-                          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+                        <state relative-caret-position="289">
+                          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
                           <folding>
                             <element signature="imports" expanded="true" />
+                            <element signature="e#1353#1354#0" expanded="true" />
+                            <element signature="e#1382#1383#0" expanded="true" />
                           </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="ClientChatView.java" pinned="false" current-in-tab="false">
+                  <file leaf-file-name="ClientChatView.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/client_src/ClientView/ClientChatView.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="102">
-                          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+                        <state relative-caret-position="504">
+                          <caret line="114" column="33" lean-forward="true" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
                           <folding>
                             <element signature="imports" expanded="true" />
-                            <element signature="e#1020#1095#0" expanded="false" />
-                            <element signature="e#3209#3210#0" expanded="true" />
-                            <element signature="e#3250#3251#0" expanded="true" />
+                            <element signature="e#1046#1121#0" expanded="false" />
+                            <element signature="e#1393#1394#0" expanded="true" />
+                            <element signature="e#1427#1428#0" expanded="true" />
+                            <element signature="e#3231#3232#0" expanded="true" />
+                            <element signature="e#3272#3273#0" expanded="true" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="ServerModel.java" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="153">
+                          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+                          <folding>
+                            <element signature="method#ServerModel#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#getIpAddress#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#getClientsList#0;class#ServerModel#0" expanded="false" />
+                            <element signature="e#1956#1957#0" expanded="true" />
+                            <element signature="e#1993#1994#0" expanded="true" />
+                            <element signature="e#2001#2076#0" expanded="false" />
+                            <element signature="method#startTheServer#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#receiveData#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#processReceivedData#0;class#ServerModel#0" expanded="false" />
+                            <element signature="e#3179#3202#0" expanded="false" />
+                            <element signature="method#setDataOut#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#setDataIn#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#acceptClient#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#updateClientName#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#findClientByIpAndPort#0;class#ServerModel#0" expanded="false" />
+                            <element signature="method#removeClient#0;class#ServerModel#0" expanded="false" />
+                            <element signature="e#5706#5707#0" expanded="true" />
+                            <element signature="e#5762#5763#0" expanded="true" />
+                            <element signature="e#5770#5845#0" expanded="false" />
                           </folding>
                         </state>
                       </provider>
@@ -142,8 +195,8 @@
                   <file leaf-file-name="UsersConnectedView.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/client_src/ClientView/UsersConnectedView.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="422">
-                          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+                        <state relative-caret-position="318">
+                          <caret line="83" column="42" lean-forward="false" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -154,8 +207,8 @@
                   <file leaf-file-name="ClientsConnectedView.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/server_src/ServerView/ClientsConnectedView.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="419">
-                          <caret line="104" column="5" lean-forward="false" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+                        <state relative-caret-position="228">
+                          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="104" selection-end-column="5" />
                           <folding>
                             <element signature="e#2826#2827#0" expanded="true" />
                             <element signature="e#2875#2876#0" expanded="true" />
@@ -167,12 +220,14 @@
                   <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ClientController.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="425">
-                          <caret line="27" column="82" lean-forward="false" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="82" />
+                        <state relative-caret-position="340">
+                          <caret line="63" column="64" lean-forward="true" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
                           <folding>
                             <element signature="imports" expanded="true" />
-                            <element signature="e#419#420#0" expanded="true" />
-                            <element signature="e#479#480#0" expanded="true" />
+                            <element signature="method#ClientController#0;class#ClientController#0" expanded="false" />
+                            <element signature="method#sendInitialInfo#0;class#ClientController#0" expanded="false" />
+                            <element signature="e#992#993#0" expanded="true" />
+                            <element signature="e#1051#1052#0" expanded="true" />
                           </folding>
                         </state>
                       </provider>
@@ -185,8 +240,8 @@
                   <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/server_src/Server.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="36">
-                          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+                        <state relative-caret-position="54">
+                          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                           <folding />
                         </state>
                       </provider>
@@ -218,12 +273,18 @@
         <splitter split-orientation="horizontal" split-proportion="0.5034965">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="RSAModel.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/client_src/ClientModel/RSAModel.java">
+              <file leaf-file-name="ClientSocketModel.java" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ClientSocketModel.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="102">
-                      <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
-                      <folding />
+                    <state relative-caret-position="612">
+                      <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+                      <folding>
+                        <element signature="imports" expanded="true" />
+                        <element signature="e#1464#1465#0" expanded="true" />
+                        <element signature="e#1494#1495#0" expanded="true" />
+                        <element signature="e#1538#1539#0" expanded="true" />
+                        <element signature="e#1567#1568#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -231,11 +292,37 @@
               <file leaf-file-name="ServerController.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/ServerController.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="316">
-                      <caret line="161" column="60" lean-forward="false" selection-start-line="161" selection-start-column="60" selection-end-line="161" selection-end-column="60" />
+                    <state relative-caret-position="425">
+                      <caret line="87" column="31" lean-forward="true" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
                       <folding>
                         <element signature="imports" expanded="true" />
-                        <marker date="1511564430187" expanded="true" signature="4524:4699" ph="{...}" />
+                        <marker date="1511571770687" expanded="true" signature="4681:4856" ph="{...}" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="ConversationMsgModel.java" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ConversationMsgModel.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="153">
+                      <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="UpdateMsgModel.java" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/UpdateMsgModel.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="306">
+                      <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                      <folding>
+                        <element signature="imports" expanded="true" />
+                        <element signature="e#222#223#0" expanded="true" />
+                        <element signature="e#256#257#0" expanded="true" />
+                        <element signature="e#305#306#0" expanded="true" />
+                        <element signature="e#339#340#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -249,9 +336,21 @@
                       <folding>
                         <element signature="e#396#397#0" expanded="true" />
                         <element signature="e#433#434#0" expanded="true" />
-                        <element signature="e#576#577#0" expanded="true" />
-                        <element signature="e#616#617#0" expanded="true" />
+                        <element signature="e#575#576#0" expanded="true" />
+                        <element signature="e#615#616#0" expanded="true" />
+                        <element signature="e#664#665#0" expanded="true" />
+                        <element signature="e#701#702#0" expanded="true" />
                       </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="InitialClientInfoMsgModel.java" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/InitialClientInfoMsgModel.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="68">
+                      <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
@@ -259,8 +358,8 @@
               <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/ViewController.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="578">
-                      <caret line="126" column="38" lean-forward="true" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
+                    <state relative-caret-position="180">
+                      <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
                       <folding>
                         <element signature="imports" expanded="true" />
                       </folding>
@@ -271,14 +370,16 @@
               <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ClientController.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="408">
-                      <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="31" />
+                    <state relative-caret-position="455">
+                      <caret line="74" column="23" lean-forward="false" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
                       <folding>
                         <element signature="imports" expanded="true" />
-                        <element signature="e#419#420#0" expanded="true" />
-                        <element signature="e#479#480#0" expanded="true" />
-                        <element signature="e#522#523#0" expanded="true" />
-                        <element signature="e#556#557#0" expanded="true" />
+                        <element signature="e#454#455#0" expanded="true" />
+                        <element signature="e#514#515#0" expanded="true" />
+                        <element signature="e#557#558#0" expanded="true" />
+                        <element signature="e#591#592#0" expanded="true" />
+                        <element signature="e#992#993#0" expanded="true" />
+                        <element signature="e#1051#1052#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -287,25 +388,14 @@
               <file leaf-file-name="ClientModel.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1460">
-                      <caret line="91" column="5" lean-forward="false" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+                    <state relative-caret-position="-1265">
+                      <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
                       <folding>
                         <element signature="imports" expanded="true" />
-                        <element signature="e#1539#1540#0" expanded="true" />
-                        <element signature="e#1583#1584#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="InitialClientInfoMsgModel.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/InitialClientInfoMsgModel.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="425">
-                      <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-                      <folding>
-                        <element signature="e#393#394#0" expanded="true" />
-                        <element signature="e#424#425#0" expanded="true" />
+                        <element signature="e#1353#1354#0" expanded="true" />
+                        <element signature="e#1382#1383#0" expanded="true" />
+                        <element signature="e#1611#1612#0" expanded="true" />
+                        <element signature="e#1655#1656#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -314,47 +404,12 @@
               <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ViewController.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="408">
-                      <caret line="106" column="27" lean-forward="false" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
+                    <state relative-caret-position="588">
+                      <caret line="136" column="73" lean-forward="true" selection-start-line="136" selection-start-column="73" selection-end-line="136" selection-end-column="73" />
                       <folding>
                         <element signature="imports" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="ServerModel.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="221">
-                      <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                        <element signature="method#getIpAddress#0;class#ServerModel#0" expanded="false" />
-                        <element signature="e#1740#1748#0" expanded="true" />
-                        <element signature="e#1897#1972#0" expanded="false" />
-                        <element signature="method#startTheServer#0;class#ServerModel#0" expanded="false" />
-                        <element signature="e#3075#3098#0" expanded="false" />
-                        <element signature="method#setDataOut#0;class#ServerModel#0" expanded="false" />
-                        <element signature="method#setDataIn#0;class#ServerModel#0" expanded="false" />
-                        <element signature="method#acceptClient#0;class#ServerModel#0" expanded="false" />
-                        <element signature="method#removeClient#0;class#ServerModel#0" expanded="false" />
-                        <element signature="e#5603#5604#0" expanded="true" />
-                        <element signature="e#5659#5660#0" expanded="true" />
-                        <element signature="e#5667#5742#0" expanded="false" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="ClientsConnectedView.java" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/server_src/ServerView/ClientsConnectedView.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="592">
-                      <caret line="109" column="9" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
-                      <folding>
-                        <element signature="e#2826#2827#0" expanded="true" />
-                        <element signature="e#2875#2876#0" expanded="true" />
+                        <element signature="e#4822#4823#0" expanded="true" />
+                        <element signature="e#4884#4885#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -376,16 +431,16 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="ServerController.java" pinned="false" current-in-tab="false">
+              <file leaf-file-name="ServerController.java" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/ServerController.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="476">
-                      <caret line="151" column="9" lean-forward="true" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
+                    <state relative-caret-position="572">
+                      <caret line="57" column="48" lean-forward="false" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
                       <folding>
                         <element signature="imports" expanded="true" />
-                        <element signature="e#5680#5681#0" expanded="true" />
-                        <element signature="e#5757#5758#0" expanded="true" />
-                        <marker date="1511564430187" expanded="true" signature="4524:4699" ph="{...}" />
+                        <element signature="e#5883#5884#0" expanded="true" />
+                        <element signature="e#5960#5961#0" expanded="true" />
+                        <marker date="1511571770687" expanded="true" signature="4681:4856" ph="{...}" />
                       </folding>
                     </state>
                   </provider>
@@ -401,11 +456,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="KeyPairModel.java" pinned="false" current-in-tab="true">
+              <file leaf-file-name="KeyPairModel.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/KeyPairModel.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="218">
-                      <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+                    <state relative-caret-position="469">
+                      <caret line="51" column="14" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
                       <folding />
                     </state>
                   </provider>
@@ -428,6 +483,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Stream</find>
+      <find>waitForClient</find>
+      <find>clea</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -464,18 +521,19 @@
         <option value="$PROJECT_DIR$/src/client_src/ClientView/NameView.java" />
         <option value="$PROJECT_DIR$/src/client_src/ClientView/ServerInfoView.java" />
         <option value="$PROJECT_DIR$/src/client_src/ClientModel/RSAModel.java" />
-        <option value="$PROJECT_DIR$/src/client_src/ClientView/ClientChatView.java" />
-        <option value="$PROJECT_DIR$/src/client_src/ClientView/UsersConnectedView.java" />
-        <option value="$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java" />
-        <option value="$PROJECT_DIR$/src/client_src/ClientController/MainClientController.java" />
-        <option value="$PROJECT_DIR$/src/client_src/ClientController/ViewController.java" />
         <option value="$PROJECT_DIR$/src/server_src/ServerModel/InitialClientInfoMsgModel.java" />
         <option value="$PROJECT_DIR$/src/server_src/ServerController/ViewController.java" />
         <option value="$PROJECT_DIR$/src/server_src/ServerView/ClientsConnectedView.java" />
+        <option value="$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java" />
+        <option value="$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java" />
+        <option value="$PROJECT_DIR$/src/client_src/ClientController/MainClientController.java" />
+        <option value="$PROJECT_DIR$/src/client_src/ClientController/ViewController.java" />
+        <option value="$PROJECT_DIR$/src/client_src/ClientController/ClientController.java" />
+        <option value="$PROJECT_DIR$/src/server_src/ServerModel/UpdateMsgModel.java" />
         <option value="$PROJECT_DIR$/src/server_src/ServerModel/ClientSocketModel.java" />
         <option value="$PROJECT_DIR$/src/server_src/ServerController/ServerController.java" />
-        <option value="$PROJECT_DIR$/src/client_src/ClientController/ClientController.java" />
-        <option value="$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java" />
+        <option value="$PROJECT_DIR$/src/client_src/ClientView/UsersConnectedView.java" />
+        <option value="$PROJECT_DIR$/src/client_src/ClientView/ClientChatView.java" />
       </list>
     </option>
   </component>
@@ -588,7 +646,7 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files (x86)/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS 342 Project 04 - Networked Battleship" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -756,7 +814,7 @@
       <workItem from="1511475642066" duration="1120000" />
       <workItem from="1511542156827" duration="28000" />
       <workItem from="1511549985830" duration="180000" />
-      <workItem from="1511550214672" duration="13710000" />
+      <workItem from="1511550214672" duration="21925000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1511306019351</created>
@@ -814,11 +872,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511563974637</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="User names update">
+      <created>1511565426062</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1511565426062</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71410000" />
+    <option name="totallyTimeSpent" value="79625000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -831,17 +896,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="2426" height="1415" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.49847627" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29274005" sideWeight="0.47252747" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29274005" sideWeight="0.46914625" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3553459" sideWeight="0.5015002" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30288836" sideWeight="0.5262046" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29117876" sideWeight="0.53085375" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25257325" sideWeight="0.49847627" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.49102965" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -853,7 +917,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30288836" sideWeight="0.47379544" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30288836" sideWeight="0.47379544" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -873,14 +937,15 @@
     <MESSAGE value="basic connection established" />
     <MESSAGE value="multiple clients connection established" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="User names update" />
+    <option name="LAST_COMMIT_MESSAGE" value="User names update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java</url>
-          <line>143</line>
+          <line>146</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
@@ -890,7 +955,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/NetworkDataModel.java" />
     <entry file="file://$PROJECT_DIR$/src/server_src/ServerView/MenuBarView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -939,7 +1003,7 @@
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1511564430187" expanded="true" signature="4524:4699" ph="{...}" />
+            <marker date="1511571770687" expanded="true" signature="4681:4856" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -969,19 +1033,25 @@
         <state relative-caret-position="2646">
           <caret line="152" column="0" lean-forward="true" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#ServerModel#0;class#ServerModel#0" expanded="false" />
             <element signature="method#getIpAddress#0;class#ServerModel#0" expanded="false" />
-            <element signature="e#1740#1748#0" expanded="true" />
-            <element signature="e#1897#1972#0" expanded="false" />
+            <element signature="method#getClientsList#0;class#ServerModel#0" expanded="false" />
+            <element signature="e#1956#1957#0" expanded="true" />
+            <element signature="e#1993#1994#0" expanded="true" />
+            <element signature="e#2001#2076#0" expanded="false" />
             <element signature="method#startTheServer#0;class#ServerModel#0" expanded="false" />
-            <element signature="e#3075#3098#0" expanded="false" />
+            <element signature="method#receiveData#0;class#ServerModel#0" expanded="false" />
+            <element signature="method#processReceivedData#0;class#ServerModel#0" expanded="false" />
+            <element signature="e#3179#3202#0" expanded="false" />
             <element signature="method#setDataOut#0;class#ServerModel#0" expanded="false" />
             <element signature="method#setDataIn#0;class#ServerModel#0" expanded="false" />
             <element signature="method#acceptClient#0;class#ServerModel#0" expanded="false" />
+            <element signature="method#updateClientName#0;class#ServerModel#0" expanded="false" />
+            <element signature="method#findClientByIpAndPort#0;class#ServerModel#0" expanded="false" />
             <element signature="method#removeClient#0;class#ServerModel#0" expanded="false" />
-            <element signature="e#5603#5604#0" expanded="true" />
-            <element signature="e#5659#5660#0" expanded="true" />
-            <element signature="e#5667#5742#0" expanded="false" />
+            <element signature="e#5706#5707#0" expanded="true" />
+            <element signature="e#5762#5763#0" expanded="true" />
+            <element signature="e#5770#5845#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1095,14 +1165,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ConversationMsgModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/NetworkDataModel.java" />
     <entry file="file://$PROJECT_DIR$/src/client_src/ClientModel/RSAModel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1148,76 +1210,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client_src/ClientView/ClientChatView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1020#1095#0" expanded="false" />
-            <element signature="e#3209#3210#0" expanded="true" />
-            <element signature="e#3250#3251#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/MainServerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="36" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/MainClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="55" lean-forward="false" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding>
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#576#577#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1460">
-          <caret line="91" column="5" lean-forward="false" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1539#1540#0" expanded="true" />
-            <element signature="e#1583#1584#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="106" column="27" lean-forward="false" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client_src/ClientView/UsersConnectedView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server_src/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1232,100 +1228,204 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/KeyPairModel.java">
+    <entry file="file://$PROJECT_DIR$/src/server_src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+        <state relative-caret-position="54">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/ViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ConversationMsgModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/InitialClientInfoMsgModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#393#394#0" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ClientController.java">
+    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/UpdateMsgModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="31" />
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#419#420#0" expanded="true" />
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ClientSocketModel.java">
+    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/KeyPairModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-          <folding>
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1276#1277#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="469">
+          <caret line="51" column="14" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ServerModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
+        <state relative-caret-position="153">
+          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#ServerModel#0;class#ServerModel#0" expanded="false" />
             <element signature="method#getIpAddress#0;class#ServerModel#0" expanded="false" />
-            <element signature="e#1740#1748#0" expanded="true" />
-            <element signature="e#1897#1972#0" expanded="false" />
+            <element signature="method#getClientsList#0;class#ServerModel#0" expanded="false" />
+            <element signature="e#1956#1957#0" expanded="true" />
+            <element signature="e#1993#1994#0" expanded="true" />
+            <element signature="e#2001#2076#0" expanded="false" />
             <element signature="method#startTheServer#0;class#ServerModel#0" expanded="false" />
-            <element signature="e#3075#3098#0" expanded="false" />
+            <element signature="method#receiveData#0;class#ServerModel#0" expanded="false" />
+            <element signature="method#processReceivedData#0;class#ServerModel#0" expanded="false" />
+            <element signature="e#3179#3202#0" expanded="false" />
             <element signature="method#setDataOut#0;class#ServerModel#0" expanded="false" />
             <element signature="method#setDataIn#0;class#ServerModel#0" expanded="false" />
             <element signature="method#acceptClient#0;class#ServerModel#0" expanded="false" />
+            <element signature="method#updateClientName#0;class#ServerModel#0" expanded="false" />
+            <element signature="method#findClientByIpAndPort#0;class#ServerModel#0" expanded="false" />
             <element signature="method#removeClient#0;class#ServerModel#0" expanded="false" />
-            <element signature="e#5603#5604#0" expanded="true" />
-            <element signature="e#5659#5660#0" expanded="true" />
-            <element signature="e#5667#5742#0" expanded="false" />
+            <element signature="e#5706#5707#0" expanded="true" />
+            <element signature="e#5762#5763#0" expanded="true" />
+            <element signature="e#5770#5845#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client_src/ClientModel/ClientModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1265">
+          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1382#1383#0" expanded="true" />
+            <element signature="e#1611#1612#0" expanded="true" />
+            <element signature="e#1655#1656#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/ServerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="161" column="60" lean-forward="false" selection-start-line="161" selection-start-column="60" selection-end-line="161" selection-end-column="60" />
+        <state relative-caret-position="425">
+          <caret line="87" column="31" lean-forward="true" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1511564430187" expanded="true" signature="4524:4699" ph="{...}" />
+            <marker date="1511571770687" expanded="true" signature="4681:4856" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server_src/ServerController/ViewController.java">
+    <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="126" column="38" lean-forward="true" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
+        <state relative-caret-position="455">
+          <caret line="74" column="23" lean-forward="false" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#992#993#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/MainClientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="55" lean-forward="false" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+          <folding>
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client_src/ClientController/ViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="136" column="73" lean-forward="true" selection-start-line="136" selection-start-column="73" selection-end-line="136" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4822#4823#0" expanded="true" />
+            <element signature="e#4884#4885#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server_src/ServerView/ClientsConnectedView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="109" column="9" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
+        <state relative-caret-position="228">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="104" selection-end-column="5" />
           <folding>
             <element signature="e#2826#2827#0" expanded="true" />
             <element signature="e#2875#2876#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client_src/ClientView/UsersConnectedView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="83" column="42" lean-forward="false" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client_src/ClientView/ClientChatView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="114" column="33" lean-forward="true" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1046#1121#0" expanded="false" />
+            <element signature="e#1393#1394#0" expanded="true" />
+            <element signature="e#1427#1428#0" expanded="true" />
+            <element signature="e#3231#3232#0" expanded="true" />
+            <element signature="e#3272#3273#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server_src/ServerModel/ClientSocketModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1464#1465#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1567#1568#0" expanded="true" />
           </folding>
         </state>
       </provider>

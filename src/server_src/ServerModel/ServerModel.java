@@ -57,6 +57,10 @@ public class ServerModel {
         return clients;
     }
 
+    public ArrayList<ClientSocketModel> getClientsSocketArray() {
+        return clientsSockets;
+    }
+
 
     // ------------------------------------------------------------------------
     // Setters
@@ -99,7 +103,6 @@ public class ServerModel {
             // close client output stream
         }
     }
-
 
     public void setDataOut(Socket clientSocket) {
         try {

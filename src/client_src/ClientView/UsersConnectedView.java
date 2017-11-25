@@ -2,6 +2,7 @@ package ClientView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -72,5 +73,19 @@ public class UsersConnectedView extends JPanel {
     // FIXME: implement
     public void removeClient(String id) {
 
+    }
+
+    public void clear() {
+        this.usersList.clear();
+        JList list = new JList(usersList);
+        usersListScrollPane.setViewportView(list);
+    }
+
+    public void updateWholeList(ArrayList<String> clients) {
+        for (String name : clients) {
+            this.usersList.addElement(name);
+        }
+        JList list = new JList(usersList);
+        this.usersListScrollPane.setViewportView(list);
     }
 }

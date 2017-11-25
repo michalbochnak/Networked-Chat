@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 
 public class ServerController {
@@ -45,14 +46,13 @@ public class ServerController {
     // Set up all the parts and start new thread for new connected client
     //
     private void processNewClient(Socket newClientSocket) {
-        serverModel.addClient(new ClientSocketModel(newClientSocket));
-        //serverModel.setDataOut(newClientSocket);
-        //serverModel.setDataIn(newClientSocket);
+        ClientSocketModel csm = new ClientSocketModel(newClientSocket);
+        serverModel.addClient(csm);
         mainServerController.getViewController().addClient
-                (newClientSocket.getInetAddress().getHostAddress());
+                (csm.getNickname());
 
         System.out.println("before thread creation...");
-        Thread clientThread = new Thread(new waitForClientData(newClientSocket));
+        Thread clientThread = new Thread(new waitForClientData(csm));
         System.out.println("Thread created, about to start the thread...");
         clientThread.start();
         System.out.println("Thread started...");
@@ -60,13 +60,35 @@ public class ServerController {
 
     // FIXME: impl
     private void processDisconnectedClient(Socket socket) {
-        // remove from server list
+        removeClientSocketFromServerList(socket);
+        sendUpdateToAllClients();
+    }
+
+    private void removeClientSocketFromServerList(Socket socket) {
         String nickname = this.getServerModel().removeClient(socket);
         // remove from GUI clients connected list
         this.mainServerController.getViewController().getClientsList().removeClient(nickname);
     }
 
+    private void sendUpdateToAllClients() {
+        ArrayList<String> clientsList = serverModel.getClientsList();
+        for (ClientSocketModel csm: serverModel.getClientsSocketArray()) {
+            sendUpdateToClient(csm, clientsList);
+        }
+    }
 
+    private void sendUpdateToClient(ClientSocketModel csm, ArrayList<String> clientsList) {
+        System.out.println("Sending update to: " + csm.getNickname());
+        try {
+            UpdateMsgModel msg = new UpdateMsgModel(clientsList);
+            ObjectOutputStream dataOut = csm.getDataOut();
+            dataOut.writeObject(msg);
+            dataOut.flush();
+            dataOut.reset();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     // ------------------------------------------------------------------------
     // Inner classes
@@ -98,35 +120,16 @@ public class ServerController {
         private ObjectOutputStream dataOut;
         private Object data;
 
-        public waitForClientData(Socket socket) {
-            clientSocket = socket;
-            setupDataOut(socket);
+        public waitForClientData(ClientSocketModel csm) {
+            clientSocket = csm.getClientSocket();
+            dataOut = csm.getDataOut();
             // to allow the client to establish data in stream
             try {
                 dataOut.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            setupDataIn(socket);
-        }
-
-        private void setupDataIn (Socket socket) {
-            try {
-                System.out.println("11");
-                this.dataIn = new ObjectInputStream(clientSocket.getInputStream());
-                System.out.println("12");
-            } catch (IOException e) {
-                System.out.println("exc: "+ e.getMessage());
-                e.printStackTrace();
-            }
-        }
-
-        private void setupDataOut(Socket socket) {
-            try {
-                this.dataOut = new ObjectOutputStream(clientSocket.getOutputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            dataIn = csm.getDataIn();
         }
 
         private Object receiveData() throws Exception {
@@ -144,6 +147,7 @@ public class ServerController {
             switch (className) {
                 case "InitialClientInfoMsgModel":
                     processInitialMsg(data);
+                    sendUpdateToAllClients();
                     break;
                 case "ConversationMsgModel":
                     processConversationMsg(data);

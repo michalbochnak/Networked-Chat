@@ -1,5 +1,7 @@
 package ServerModel;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClientSocketModel extends Socket{
@@ -7,16 +9,24 @@ public class ClientSocketModel extends Socket{
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
-    private String nickname;
     private Socket clientSocket;
+    private String nickname;
+    private ObjectOutputStream dataOut;
+    private  ObjectInputStream dataIn;
 
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
     public ClientSocketModel (Socket newClientSocket) {
-        this.nickname = newClientSocket.getRemoteSocketAddress().toString();
         this.clientSocket = newClientSocket;
+        this.nickname = newClientSocket.getRemoteSocketAddress().toString();
+        try {
+            this.dataOut = new ObjectOutputStream(newClientSocket.getOutputStream());
+            this.dataIn = new ObjectInputStream(newClientSocket.getInputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -31,6 +41,13 @@ public class ClientSocketModel extends Socket{
         return clientSocket;
     }
 
+    public ObjectOutputStream getDataOut() {
+        return dataOut;
+    }
+
+    public ObjectInputStream getDataIn() {
+        return dataIn;
+    }
 
     // ------------------------------------------------------------------------
     // Setters

@@ -7,6 +7,7 @@ import ServerView.ServerInfoView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ClientChatView extends JPanel {
     // ------------------------------------------------------------------------
@@ -15,7 +16,7 @@ public class ClientChatView extends JPanel {
     private JFrame frame;
     private JPanel mainPanel;
     private JLabel clientsListHeader;
-    private ClientsConnectedView clientsList;
+    private UsersConnectedView clientsList;
     private ServerView.MenuBarView menuBar;
     private ServerView.ServerInfoView serverInfo;
 
@@ -44,7 +45,7 @@ public class ClientChatView extends JPanel {
         return mainPanel;
     }
 
-    public ClientsConnectedView getClientsList() {
+    public UsersConnectedView getClientsList() {
         return clientsList;
     }
 
@@ -76,7 +77,7 @@ public class ClientChatView extends JPanel {
     }
 
     private void setupClientsList() {
-        clientsList = new ClientsConnectedView();
+        clientsList = new UsersConnectedView();
         //clientsList.setPreferredSize(new Dimension(200,600));
         clientsList.setBounds(10, 150, 300,100);
         mainPanel.add(clientsList);
@@ -110,6 +111,10 @@ public class ClientChatView extends JPanel {
         clientsList.addClient(id);
     }
 
+    public void updateClientsList(ArrayList<String> clients) {
+        this.clientsList.clear();
+        this.clientsList.updateWholeList(clients);
+    }
 
     // ------------------------------------------------------------------------
     // Inner classes

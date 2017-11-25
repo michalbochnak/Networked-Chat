@@ -5,6 +5,7 @@ import ClientView.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ViewController {
 
@@ -119,11 +120,13 @@ public class ViewController {
             System.out.println("-2");
             int port = Integer.parseInt(serverInfoView.getPortTextField().getText());
             System.out.println("-1");
+            // connection error
             if (!mainClientController.getClientController().connectToServer
                     (ip, port)) {
                 System.out.println("0");
                 showServerInfoErrorDialog();
             }
+            // connection succesful
             else {
                 mainClientController.setChatStage(3);
                 System.out.println("1");
@@ -131,8 +134,13 @@ public class ViewController {
                 System.out.println("2");
                 showMainChatWindow();
                 System.out.println("3");
+                mainClientController.getClientController().startThreadForDataReceiving();
             }
         }
+    }
+
+    public void updateClientsList(ArrayList<String > clients) {
+        this.clientChatView.updateClientsList(clients);
     }
 
 }

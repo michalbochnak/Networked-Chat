@@ -1,3 +1,7 @@
+
+
+
+
 package ClientController;
 
 import ClientModel.*;
@@ -11,35 +15,37 @@ import java.util.ArrayList;
 
 public class ClientController {
 
+    // ------------------------------------------------------------------------
+    // Members
+    // ------------------------------------------------------------------------
     private ClientModel clientModel;
     private MainClientController mainClientController;
     private ArrayList<ClientPublicProfile> usersConnected;
 
 
+    // ------------------------------------------------------------------------
+    // Constructors
+    // ------------------------------------------------------------------------
     public ClientController(MainClientController mcc) {
         mainClientController = mcc;
         clientModel = new ClientModel();
         usersConnected = null;
     }
 
-    public boolean connectToServer(String ip, int port) {
-        return clientModel.connectToServer(ip, port);
-    }
 
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
     public ClientModel getClientModel() {
         return clientModel;
     }
 
-    /*
-    public void sendInitialInfo() {
-        InitialClientInfoMsgModel msg = new InitialClientInfoMsgModel
-                (clientModel.getClientName(),
-                        clientModel.getClientSocket().getLocalAddress().toString(),
-                        clientModel.getClientSocket().getLocalPort());
-
-        clientModel.sendData(msg);
+    // ------------------------------------------------------------------------
+    // Methods
+    // ------------------------------------------------------------------------
+    public boolean connectToServer(String ip, int port) {
+        return clientModel.connectToServer(ip, port);
     }
-*/
 
     public void startThreadForDataReceiving() {
         new Thread(new waitForServerData()).start();
@@ -50,8 +56,6 @@ public class ClientController {
                 "Server disconnected.");
     }
 
-
-
     //
     // Function send message with name to the server and waits for the server response,
     // if name is available it is added to the client list on server side and set as a name
@@ -61,7 +65,8 @@ public class ClientController {
 
         String ip = clientModel.getClientSocket().getLocalAddress().toString();
         int port = clientModel.getClientSocket().getLocalPort();
-        KeyPair publicKey = new KeyPair(77, 88);
+        // FIXME: remove
+        Pair publicKey = new Pair(77, 88);
 
         InitialClientInfoMsgModel msg = new InitialClientInfoMsgModel
                 (name, ip, port, false, publicKey);
@@ -82,10 +87,6 @@ public class ClientController {
         }
         // name not available
         return false;
-    }
-
-    private void processReceivedData(Object data) {
-
     }
 
     public void sendMessage(Object msg) {
@@ -145,11 +146,6 @@ public class ClientController {
 
         private void processConversationMsg(Object data) {
             ConversationMsgModel msg = (ConversationMsgModel)data;
-
-            System.out.println("msg to " + msg.getRecipient());
-            System.out.println("msg from " + msg.getSender());
-            System.out.println("msg " + msg.getTestMsg());
-
             mainClientController.getViewController().getClientChatView().getMsgsPanel()
                     .addMessage(msg.getSender(), msg.getTestMsg());
         }
@@ -164,11 +160,14 @@ public class ClientController {
                 } catch (Exception e) {
                     e.printStackTrace();
                     showServerDisconnectedDialog();
+                    System.exit(0);
                     break;
                 }
             }
         }
     }
+
+
 
 }
 

@@ -11,58 +11,40 @@ public class UsersConnectedView extends JPanel {
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
-    private Set<JLabel> usersSet;
-    //private JPanel mainPanel;
     private JLabel header;
     private JScrollPane usersListScrollPane;
     private DefaultListModel usersList;
     private JList list;
 
+
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
     public UsersConnectedView() {
-        usersSet = new HashSet<>();
-
         this.setPreferredSize(new Dimension(200, 500));
-        this.setBackground(Color.YELLOW);
+        this.setBackground(new Color(184, 30, 63));
         this.setLayout(new BorderLayout());
         this.usersList = new DefaultListModel();
         this.list = new JList();
 
-        //setupMainPanel();
         setupHeader();
         setupClientsListScrollPane();
-
-        this.addClient("Test User");
     }
+
 
     // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
-
-//    private void setupMainPanel() {
-//        mainPanel = new JPanel();
-//        mainPanel.setBackground(Color.DARK_GRAY);
-//        this.add(mainPanel);
-//    }
-
     private void setupHeader() {
-        header = new JLabel("Users Connected:");
+        this.header = new JLabel("Users Connected:");
+        this.header.setForeground(Color.white);
         this.add(header, BorderLayout.NORTH);
     }
 
-    /*
-    private void setupClientsList() {
-        clientsList = new JPanel();
-        clientsList.setLayout(new GridLayout(10, 1));
-        this.add(clientsList, BorderLayout.CENTER);
-    }
-    */
-
     public void setupClientsListScrollPane() {
-        usersListScrollPane = new JScrollPane();
-        usersListScrollPane.setPreferredSize(new Dimension(200, 100));
+        this.usersListScrollPane = new JScrollPane();
+        this.usersListScrollPane.setPreferredSize(new Dimension(200, 100));
+        this.usersListScrollPane.getViewport().setBackground(Color.yellow);
         this.add(usersListScrollPane);
     }
 
@@ -70,11 +52,6 @@ public class UsersConnectedView extends JPanel {
         this.usersList.addElement(id);
         this.list = new JList(usersList);
         usersListScrollPane.setViewportView(list);
-    }
-
-    // FIXME: implement
-    public void removeClient(String id) {
-
     }
 
     public void clear() {
@@ -91,11 +68,18 @@ public class UsersConnectedView extends JPanel {
         this.usersListScrollPane.setViewportView(list);
     }
 
-    public String getSelected() {
+    //
+    // returns the nickname of user selected from the users list
+    // "none" is returned if not found
+    //
+    public String retrieveSelected() {
         int index = list.getSelectedIndex();
         if ( index == -1 )
             return "none";
         else
             return (String)usersList.get(index);
     }
+
 }
+
+

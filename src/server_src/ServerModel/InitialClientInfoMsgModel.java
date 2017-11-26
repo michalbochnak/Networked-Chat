@@ -1,19 +1,27 @@
 package ServerModel;
 
-import ClientModel.KeyPair;
+import ClientModel.Pair;
 
 import java.io.Serializable;
 
 public class InitialClientInfoMsgModel implements Serializable {
 
+    // ------------------------------------------------------------------------
+    // Members
+    // ------------------------------------------------------------------------
     private String nickname;
     private String ip;
     private int port;
     private boolean nameAvailable;
-    private KeyPair publicKey;
+    private Pair publicKey;
 
-    public InitialClientInfoMsgModel (String nickname, String ip, int port, boolean nameAvailable,
-                                      KeyPair publicKey) {
+
+    // ------------------------------------------------------------------------
+    // Constructors
+    // ------------------------------------------------------------------------
+    public InitialClientInfoMsgModel (String nickname, String ip, int port,
+                                      boolean nameAvailable, Pair publicKey) {
+
         this.nickname = nickname;
         this.ip = ip;
         this.port = port;
@@ -21,6 +29,9 @@ public class InitialClientInfoMsgModel implements Serializable {
         this.publicKey = publicKey;
     }
 
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
     public String getNickname() {
         return nickname;
     }
@@ -33,7 +44,7 @@ public class InitialClientInfoMsgModel implements Serializable {
         return port;
     }
 
-    public KeyPair getPublicKey() {
+    public Pair getPublicKey() {
         return publicKey;
     }
 
@@ -41,6 +52,10 @@ public class InitialClientInfoMsgModel implements Serializable {
         return nameAvailable;
     }
 
+
+    // ------------------------------------------------------------------------
+    // Setters
+    // ------------------------------------------------------------------------
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -56,4 +71,8 @@ public class InitialClientInfoMsgModel implements Serializable {
     public void setNameAvailable(boolean nameAvailable) {
         this.nameAvailable = nameAvailable;
     }
+
+
 }
+
+

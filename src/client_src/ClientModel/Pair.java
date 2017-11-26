@@ -1,51 +1,44 @@
-package ServerModel;
-
-import ClientModel.Pair;
+package ClientModel;
 
 import java.io.Serializable;
 
-public class ClientPublicProfile implements Serializable {
+public class Pair implements Serializable {
 
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
-    private String nickname;
-    private Pair publicKey;
-
+    private int key;
+    private int n;
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public ClientPublicProfile (String name, Pair publicKey) {
-        nickname = name;
-        this.publicKey = publicKey;
+    public Pair(int key, int n) {
+        this.key = key;
+        this.n = n;
     }
 
 
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
-    public String getNickname() {
-        return nickname;
+    public int getKey() {
+        return key;
     }
 
-    public Pair getPublicKey() {
-        return publicKey;
+    public int getN() {
+        return n;
     }
 
 
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setKey(int key) {
+        this.key = key;
     }
 
-    public void setPublicKey(Pair publicKey) {
-        this.publicKey = publicKey;
+    public void setN(int n) {
+        this.n = n;
     }
-
-
 }
-
-

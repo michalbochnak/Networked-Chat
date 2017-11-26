@@ -5,14 +5,20 @@ import java.awt.*;
 
 public class MsgsPanel extends JPanel {
 
+    // ------------------------------------------------------------------------
+    // Members
+    // ------------------------------------------------------------------------
     private JLabel headerInfo;
     private JScrollPane msgsScrollPane;
     private DefaultListModel msgsList;
 
 
+    // ------------------------------------------------------------------------
+    // Constructors
+    // ------------------------------------------------------------------------
     public MsgsPanel () {
         this.setPreferredSize(new Dimension(200, 200));
-        this.setBackground(Color.pink);
+        this.setBackground(new Color(234, 30, 63));
         this.setLayout(new BorderLayout());
         this.msgsList = new DefaultListModel();
 
@@ -20,8 +26,13 @@ public class MsgsPanel extends JPanel {
         setupMsgsScrollPane();
     }
 
+
+    // ------------------------------------------------------------------------
+    // Methods
+    // ------------------------------------------------------------------------
     private void setupHeader() {
-        headerInfo = new JLabel("Messages:");
+        this.headerInfo = new JLabel("Messages:");
+        this.headerInfo.setForeground(Color.white);
         this.add(headerInfo, BorderLayout.NORTH);
     }
 
@@ -41,3 +52,5 @@ public class MsgsPanel extends JPanel {
 
 
 }
+
+

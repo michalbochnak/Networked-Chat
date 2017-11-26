@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class ConversationMsgModel implements Serializable {
 
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -12,6 +13,7 @@ public class ConversationMsgModel implements Serializable {
     private String recipient;
     private ArrayList<Integer> encryptedMsg;
     private String testMsg;
+
 
     // ------------------------------------------------------------------------
     // Constructors
@@ -50,6 +52,7 @@ public class ConversationMsgModel implements Serializable {
         return testMsg;
     }
 
+
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
@@ -66,15 +69,6 @@ public class ConversationMsgModel implements Serializable {
     }
 
 
-    // ------------------------------------------------------------------------
-    // Methods
-    // ------------------------------------------------------------------------
-
-
-
-    // ------------------------------------------------------------------------
-    // Inner classes
-    // ------------------------------------------------------------------------
-
-
 }
+
+

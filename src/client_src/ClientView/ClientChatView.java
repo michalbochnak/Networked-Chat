@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ClientChatView extends JPanel {
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -17,12 +18,12 @@ public class ClientChatView extends JPanel {
     private UsersConnectedView clientsList;
     private MsgsPanel msgsPanel;
     private SendMessagePanel sendMsgPanel;
+    private JLabel nameLabel;
 
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-
     public ClientChatView() {
         setupFrame();
         setupMenuBar();
@@ -32,13 +33,14 @@ public class ClientChatView extends JPanel {
         setupMsgsPanel();
         setupSendMsgPanel();
 
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(false);
     }
+
 
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
-
     public JFrame getFrame() {
         return frame;
     }
@@ -59,9 +61,6 @@ public class ClientChatView extends JPanel {
         return serverInfo;
     }
 
-    // ------------------------------------------------------------------------
-    // Getters
-    // ------------------------------------------------------------------------
     public SendMessagePanel getSendMsgPanel() {
         return sendMsgPanel;
     }
@@ -70,38 +69,55 @@ public class ClientChatView extends JPanel {
         return msgsPanel;
     }
 
+    public String getTypedMessage() {
+        return this.sendMsgPanel.getTypedMessage();
+    }
+
+
     // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
-
     private void setupFrame() {
         frame = new JFrame("Chat Client");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //frame.setLayout(new BorderLayout());
-        frame.setSize(500, 650);
+        frame.setSize(392, 528);
         frame.setLocationRelativeTo(null);
-        //frame.setResizable(false);
-    }
-
-    private void setupClientsList() {
-        clientsList = new UsersConnectedView();
-        //clientsList.setPreferredSize(new Dimension(200,600));
-        clientsList.setBounds(10, 150, 300,100);
-        mainPanel.add(clientsList);
+        frame.setResizable(false);
     }
 
     private void setupMainPanel() {
         mainPanel = new JPanel();
         mainPanel.setLayout(null);
         //mainPanel.setBounds(100, 100, 300, 300);
-        mainPanel.setBackground(Color.yellow);
+        mainPanel.setBackground(new Color(0, 15, 15));
         frame.add(mainPanel, BorderLayout.CENTER);
     }
 
     private void setupServerInfo() {
         serverInfo = new ServerInfoView("-", "-");
-        serverInfo.setBounds(10, 10, 300, 70);
+        serverInfo.setBounds(195, 10, 180, 60);
+        serverInfo.setBackgroundColor(null);
         mainPanel.add(serverInfo);
+    }
+
+    private void setupClientsList() {
+        clientsList = new UsersConnectedView();
+        //clientsList.setPreferredSize(new Dimension(200,600));
+        clientsList.setBounds(10, 85, 365, 100);
+        mainPanel.add(clientsList);
+    }
+
+    private void setupMsgsPanel() {
+        msgsPanel = new MsgsPanel();
+        msgsPanel.setBounds(10, 190, 365, 200);
+        mainPanel.add(msgsPanel);
+    }
+
+    private void setupSendMsgPanel() {
+        sendMsgPanel = new SendMessagePanel();
+        sendMsgPanel.setBounds(10, 395, 365, 70);
+        mainPanel.add(sendMsgPanel);
     }
 
     private void setupMenuBar() {
@@ -109,21 +125,17 @@ public class ClientChatView extends JPanel {
         frame.setJMenuBar(menuBar);
     }
 
-    private void setupMsgsPanel() {
-        msgsPanel = new MsgsPanel();
-        msgsPanel.setBounds(10, 260, 300, 200);
-        mainPanel.add(msgsPanel);
-    }
-
-    private void setupSendMsgPanel() {
-        sendMsgPanel = new SendMessagePanel();
-        sendMsgPanel.setBounds(10, 470, 300, 70);
-        mainPanel.add(sendMsgPanel);
-    }
-
     public void setServerInfo(String ip, int port) {
         serverInfo.setIpLabel(ip);
         serverInfo.setPortLabel(port);
+    }
+
+    public void setNameLabel(String name) {
+        nameLabel = new JLabel(name, SwingConstants.CENTER);
+        nameLabel.setBounds(10, 10, 180, 60);
+        nameLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        nameLabel.setForeground(new Color(234, 30, 63));
+        mainPanel.add(nameLabel);
     }
 
     public void addClient(String id) {
@@ -135,12 +147,7 @@ public class ClientChatView extends JPanel {
         this.clientsList.updateWholeList(clients);
     }
 
-    public String getTypedMessage() {
-        return this.sendMsgPanel.getTypedMessage();
-    }
-
-    // ------------------------------------------------------------------------
-    // Inner classes
-    // ------------------------------------------------------------------------
 
 }
+
+

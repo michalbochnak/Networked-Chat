@@ -3,7 +3,6 @@ package ClientController;
 import ClientView.*;
 import ServerModel.ConversationMsgModel;
 import ClientModel.*;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,10 +10,14 @@ import java.util.ArrayList;
 
 public class ViewController {
 
+    // ------------------------------------------------------------------------
+    // Members
+    // ------------------------------------------------------------------------
     private NameView nameView;
     private ServerInfoView serverInfoView;
     private ClientChatView clientChatView;
     private MainClientController mainClientController;
+
 
     // ------------------------------------------------------------------------
     // Constructors
@@ -45,6 +48,18 @@ public class ViewController {
         }
     }
 
+
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
+    public ClientChatView getClientChatView() {
+        return clientChatView;
+    }
+
+
+    // ------------------------------------------------------------------------
+    // Methods
+    // ------------------------------------------------------------------------
     private void showNamePrompt() {
         hideAllWindows();
         nameView.show();
@@ -74,23 +89,10 @@ public class ViewController {
         nameView.addOkButtonActionListener(new NameViewOkButtonListener());
     }
 
-    private void showServerInfoErrorDialog() {
-        JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
-                "Error connecting to server.\n" +
-                        "Please make sure you type server information correctly.",
-                "Server information incorrect", JOptionPane.PLAIN_MESSAGE);
+    public void updateClientsList(ArrayList<String > clients) {
+        this.clientChatView.updateClientsList(clients);
     }
 
-    // ------------------------------------------------------------------------
-    // Getters
-    // ------------------------------------------------------------------------
-    public NameView getNameView() {
-        return nameView;
-    }
-
-    public ClientChatView getClientChatView() {
-        return clientChatView;
-    }
 
     // ------------------------------------------------------------------------
     // Inner classes
@@ -98,14 +100,14 @@ public class ViewController {
     public class NameViewOkButtonListener implements ActionListener {
 
         private void showNameTooLongDialog() {
-            JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
+            JOptionPane.showMessageDialog(null,
                     "Name must be at least 1 letter and\n" +
                             "no more than 20 letters",
                     "Name format incorrect", JOptionPane.PLAIN_MESSAGE);
         }
 
         private void showNameTakenDialog() {
-            JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
+            JOptionPane.showMessageDialog(null,
                     "Name you entered is already taken by the other chat user.\n" +
                             "Please, use different nickname",
                     "Name format incorrect", JOptionPane.PLAIN_MESSAGE);
@@ -122,10 +124,12 @@ public class ViewController {
             }
             else {
                 mainClientController.setChatStage(3);
+                mainClientController.getViewController().getClientChatView().setNameLabel
+                        (mainClientController.getClientController().getClientModel().getClientName());
                 showMainChatWindow();
                 mainClientController.getClientController().startThreadForDataReceiving();
                 ConversationMsgModel msg = new ConversationMsgModel();
-               // mainClientController.getClientController().getClientModel().
+                // mainClientController.getClientController().getClientModel().
               //          setClientName(name);
               //  mainClientController.getClientController().sendInitialInfo();
             }
@@ -142,32 +146,94 @@ public class ViewController {
         }
     }
 
-    // FIXME: add error check for 'port' given by user as letters
     public class ServerInfoViewOkButtonListener implements ActionListener {
+
+        //checks if number is prime
+        private boolean isPrime(int n) {
+            if(n<=1){
+                return  false;
+            }
+            for (int i = 2; i < n; i++)
+                if (n % i == 0)
+                    return false;
+
+            return true;
+        }
+
+        private boolean sumMoreThan(int a, int b, int threshold) {
+            return (a * b) > threshold;
+        }
+
+        private void showServerInfoErrorDialog() {
+            JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
+                    "Some of the provided information is incorrect.\n" +
+                            "Please make sure server is running and make sure\n" +
+                            "you typed server information correctly.\n" +
+                            "Leave prime numbers fields empty or\n" +
+                            "make sure typed in numbers are prime and their product\n" +
+                            "is greater than " + (128*128*128) + ".",
+                    "Server information incorrect", JOptionPane.PLAIN_MESSAGE);
+        }
+
+        private void tryToConnect(String ip, String portString) {
+            int port = -1;
+            try {
+                port = Integer.parseInt(portString);
+            } catch (Exception exc) {
+                exc.printStackTrace();
+            }
+            // connection successful
+            if (mainClientController.getClientController().connectToServer
+                    (ip, port)) {
+                mainClientController.setChatStage(2);
+                showNamePrompt();
+
+                String serverIp = mainClientController.getClientController().getClientModel()
+                        .getClientSocket().getLocalAddress().getHostAddress().toString();
+                int serverPort = mainClientController.getClientController().getClientModel()
+                        .getClientSocket().getPort();
+
+                mainClientController.getViewController().getClientChatView()
+                        .setServerInfo(serverIp, serverPort);
+            }
+            // connection not succesful
+            else {
+                showServerInfoErrorDialog();
+            }
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
             String ip = serverInfoView.getIpTextField().getText();
             String portString = serverInfoView.getPortTextField().getText();
-            if (ip.length() > 0 && portString.length() > 0) {
-                int port = -1;
-                try {
-                    port = Integer.parseInt(portString);
-                } catch (Exception exc) {
-                    exc.printStackTrace();
-                }
-                // connection successful
-                if (mainClientController.getClientController().connectToServer
-                        (ip, port)) {
-                    mainClientController.setChatStage(2);
-                    showNamePrompt();
-                }
-                // connection not succesful
-                else {
+            String pNumber = serverInfoView.getpTextField().getText();
+            String qNumber = serverInfoView.getqTextField().getText();
+
+            if (pNumber.length() <= 0 && qNumber.length() <= 0) {
+                // generate random from file
+                    // FIXME: read p & q from file
+                // try to connect
+                if (ip.length() > 0 && portString.length() > 0) {
+                   tryToConnect(ip, portString);
+                } else {
                     showServerInfoErrorDialog();
                 }
             }
             else {
-                showServerInfoErrorDialog();
+                try {
+                    int p = Integer.parseInt(pNumber);
+                    int q = Integer.parseInt(qNumber);
+                    if ( (p != q) && isPrime(p) && isPrime(q) && sumMoreThan(p, q, (128 * 128 * 128))) {
+                        mainClientController.getClientController().getClientModel().setPq(new Pair(p, q));
+                        tryToConnect(ip, portString);
+                    }
+                    else {
+                        showServerInfoErrorDialog();
+                    }
+                } catch (Exception exc) {
+                    exc.printStackTrace();
+                    showServerInfoErrorDialog();
+                }
             }
         }
     }
@@ -190,7 +256,7 @@ public class ViewController {
         public void actionPerformed(ActionEvent e) {
 
             String msgToSend = clientChatView.getTypedMessage();
-            String msgRecipient = clientChatView.getClientsList().getSelected();
+            String msgRecipient = clientChatView.getClientsList().retrieveSelected();
             String msgSender = mainClientController.getClientController().getClientModel()
                     .getClientName();
 
@@ -201,7 +267,8 @@ public class ViewController {
                 showSelectRecipientDialog();
             }
             else {
-                clientChatView.getMsgsPanel().addMessage(msgSender, msgToSend);
+                clientChatView.getMsgsPanel().addMessage
+                        ("Me (to " + msgRecipient + ")", msgToSend);
                 ConversationMsgModel msg = new ConversationMsgModel
                         (msgSender, msgRecipient, msgToSend);
                 mainClientController.getClientController().sendMessage(msg);
@@ -211,8 +278,8 @@ public class ViewController {
         }
     }
 
-    public void updateClientsList(ArrayList<String > clients) {
-        this.clientChatView.updateClientsList(clients);
-    }
+
 
 }
+
+

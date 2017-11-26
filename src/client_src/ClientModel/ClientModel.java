@@ -15,7 +15,7 @@ public class ClientModel {
     private Socket clientSocket;
     private ObjectInputStream dataIn;
     private ObjectOutputStream dataOut;
-    private KeyPair publicKey;
+    private Pair publicKey, privateKey, pq;
 
 
     // ------------------------------------------------------------------------
@@ -27,12 +27,8 @@ public class ClientModel {
         dataOut = null;
         dataIn = null;
         publicKey = null;
-    }
-
-    public ClientModel(String serverIp, int serverPort) {
-        connectToServer(serverIp, serverPort);
-        //setDataOut();
-        //setDataIn();
+        privateKey = null;
+        pq = null;
     }
 
 
@@ -55,11 +51,18 @@ public class ClientModel {
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
+    public void setPublicKey(Pair publicKey) {
+        this.publicKey = publicKey;
+    }
 
+    public void setPq(Pair pq) {
+        this.pq = pq;
+    }
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }
+
 
     // ------------------------------------------------------------------------
     // Methods
@@ -76,15 +79,14 @@ public class ClientModel {
         }
     }
 
+    //
     // ObjectOutputStream must be set first,
     // also, ObjectOutStream on the server side must be flushed
     // before client will set ObjectInputStream
+    //
     private void setupInOutStream() {
-        System.out.println("A");
         setupDataOutStream();
-        System.out.println("B");
         setupDataInStream();
-        System.out.println("C");
     }
 
     private void setupDataInStream() {
@@ -103,24 +105,6 @@ public class ClientModel {
             e.printStackTrace();
         }
     }
-
-//    private void setDataOut() {
-//        try {
-//            dataOut = new ObjectOutputStream(clientSocket.getOutputStream());
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void setDataIn() {
-//        try {
-//            dataIn = new ObjectInputStream(clientSocket.getInputStream());
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
 
     public void sendData(Object msg) {
         try {
@@ -142,21 +126,7 @@ public class ClientModel {
         return data;
     }
 
-    //checks if number is prime
-    private boolean isPrime(int n) {
-        if(n<=1){
-            return  false;
-        }
-        for (int i = 2; i < n; i++)
-            if (n % i == 0)
-                return false;
-
-        return true;
-    }
-
-    // ------------------------------------------------------------------------
-    // Inner classes
-    // ------------------------------------------------------------------------
-
 
 }
+
+

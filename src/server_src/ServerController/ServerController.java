@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
 
 
 public class ServerController {
@@ -38,27 +37,17 @@ public class ServerController {
     // Methods
     // ------------------------------------------------------------------------
 
-    public void start() {
-
-    }
-
     //
     // Set up all the parts and start new thread for new connected client
     //
     private void processNewClient(Socket newClientSocket) {
         ClientSocketModel csm = new ClientSocketModel(newClientSocket);
         serverModel.addClient(csm);
-        mainServerController.getViewController().addClient
-                (csm.getNickname());
 
-        System.out.println("before thread creation...");
         Thread clientThread = new Thread(new waitForClientData(csm));
-        System.out.println("Thread created, about to start the thread...");
         clientThread.start();
-        System.out.println("Thread started...");
     }
 
-    // FIXME: impl
     private void processDisconnectedClient(ClientSocketModel socket) {
         removeClientSocketFromServerList(socket.getClientSocket());
         sendUpdateToAllClients();
@@ -77,21 +66,7 @@ public class ServerController {
         }
     }
 
-//    private void sendUpdateToClient(ClientSocketModel csm, ArrayList<String> clientsList) {
-//        System.out.println("Sending update to: " + csm.getNickname());
-//        try {
-//            UpdateMsgModel msg = new UpdateMsgModel(clientsList);
-//            ObjectOutputStream dataOut = csm.getDataOut();
-//            dataOut.writeObject(msg);
-//            dataOut.flush();
-//            dataOut.reset();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     private void sendMessageToClient(ClientSocketModel csm, Object data) {
-        System.out.println("Sending message to " + csm.getNickname());
         try {
             csm.getDataOut().writeObject(data);
             csm.getDataOut().flush();
@@ -161,23 +136,12 @@ public class ServerController {
                     break;
             }
         }
-/*
-        private void processInitialMsg(Object data) {
-            InitialClientInfoMsgModel msg = (InitialClientInfoMsgModel)data;
-            String name = msg.getNickname();
-            String ip = msg.getIp();
-            int port = msg.getPort();
-            // set client nickname
-            serverModel.updateClientInfo(name, ip, port);
-            // update gui list
-            mainServerController.getViewController().updateClientsList(serverModel.getClientsList());
-        }
-*/
+
         private void processConversationMsg(Object data) {
             ConversationMsgModel msg = (ConversationMsgModel)data;
             ClientSocketModel recipient = serverModel.findRecipientSocket(msg.getRecipient());
             // forward message
-            System.out.println("Forwarding msg to " + msg.getRecipient());
+            System.out.println("Forwarding msg to " + recipient.getNickname());
             sendMessageToClient(recipient, msg);
         }
 
@@ -217,17 +181,10 @@ public class ServerController {
                 }
             }
         }
+
     }
 
 
-
-
-
-
-
-
-
-
-
-
 }
+
+

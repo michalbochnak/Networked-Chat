@@ -3,11 +3,16 @@ package ServerController;
 
 public class MainServerController {
 
+    // ------------------------------------------------------------------------
+    // Members
+    // ------------------------------------------------------------------------
     private ServerController serverController;
     private ViewController viewController;
 
 
-    // constructor
+    // ------------------------------------------------------------------------
+    // Constructors
+    // ------------------------------------------------------------------------
     public MainServerController() {
         serverController = new ServerController(this);
         viewController = new ViewController(this);
@@ -27,4 +32,8 @@ public class MainServerController {
     public ViewController getViewController() {
         return viewController;
     }
+
+
 }
+
+

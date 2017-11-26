@@ -7,13 +7,11 @@ import java.util.ArrayList;
 
 public class ViewController {
 
-
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
     private JFrame frame;
     private JPanel mainPanel;
-    private JLabel clientsListHeader;
     private ClientsConnectedView clientsList;
     private MenuBarView menuBar;
     private ServerInfoView serverInfo;
@@ -23,7 +21,6 @@ public class ViewController {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-
     public ViewController(MainServerController mainServerController) {
         this.mainServerController = mainServerController;
         setupFrame();
@@ -34,20 +31,16 @@ public class ViewController {
         frame.setVisible(true);
     }
 
+
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
-
     public JFrame getFrame() {
         return frame;
     }
 
     public JPanel getMainPanel() {
         return mainPanel;
-    }
-
-    public JLabel getClientsListHeader() {
-        return clientsListHeader;
     }
 
     public ClientsConnectedView getClientsList() {
@@ -68,42 +61,32 @@ public class ViewController {
 
 
     // ------------------------------------------------------------------------
-    // Setters
-    // ------------------------------------------------------------------------
-
-
-
-    // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
-
     private void setupFrame() {
         frame = new JFrame("Chat Server");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //frame.setLayout(new BorderLayout());
-        frame.setSize(500, 500);
+        frame.setSize(247, 365);
         frame.setLocationRelativeTo(null);
-        //frame.setResizable(false);
+        frame.setResizable(false);
     }
 
     private void setupClientsList() {
         clientsList = new ClientsConnectedView();
-        //clientsList.setPreferredSize(new Dimension(200,600));
-        clientsList.setBounds(10, 150, 300,100);
+        clientsList.setBounds(20, 90, 200,200);
         mainPanel.add(clientsList);
     }
 
     private void setupMainPanel() {
         mainPanel = new JPanel();
         mainPanel.setLayout(null);
-        //mainPanel.setBounds(100, 100, 300, 300);
-        mainPanel.setBackground(Color.pink);
+        mainPanel.setBackground(new Color(38,  40, 66));
         frame.add(mainPanel, BorderLayout.CENTER);
     }
 
     private void setupServerInfo() {
         serverInfo = new ServerInfoView("none", "none");
-        serverInfo.setBounds(10, 10, 300, 70);
+        serverInfo.setBounds(20, 20, 200, 50);
         mainPanel.add(serverInfo);
     }
 
@@ -117,18 +100,12 @@ public class ViewController {
         serverInfo.setPortLabel(port);
     }
 
-    public void addClient(String id) {
-        clientsList.addClient(id);
-    }
-
     public void updateClientsList(ArrayList<String> clients) {
         this.clientsList.clear();
         this.clientsList.updateWholeList(clients);
     }
 
 
-    // ------------------------------------------------------------------------
-    // Inner classes
-    // ------------------------------------------------------------------------
-
 }
+
+

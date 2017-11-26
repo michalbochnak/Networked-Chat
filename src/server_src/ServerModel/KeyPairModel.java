@@ -22,14 +22,12 @@ public class KeyPairModel {
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
-
     private BigInteger privateKey, publicKey;
 
 
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-
     public KeyPairModel() {
         privateKey = null;
         publicKey = null;
@@ -39,7 +37,6 @@ public class KeyPairModel {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
-
     public BigInteger getPrivateKey() {
         return privateKey;
     }
@@ -48,12 +45,11 @@ public class KeyPairModel {
         return publicKey;
     }
 
+
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
-
     public void setPrivateKey(BigInteger privateKey) {
-
         this.privateKey = privateKey;
     }
 
@@ -61,10 +57,10 @@ public class KeyPairModel {
         this.publicKey = publicKey;
     }
 
+
     // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
-
     // FIXME: implement
     public BigInteger generateKey() {
         return new BigInteger("2");

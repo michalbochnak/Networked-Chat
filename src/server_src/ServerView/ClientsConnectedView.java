@@ -3,17 +3,12 @@ package ServerView;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class ClientsConnectedView extends JPanel {
 
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
-
-    private Set<JLabel> clientsSet;
-    //private JPanel mainPanel;
     private JLabel header;
     private JScrollPane clientsListScrollPane;
     private DefaultListModel clientList;
@@ -21,12 +16,10 @@ public class ClientsConnectedView extends JPanel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-
     public ClientsConnectedView() {
-        clientsSet = new HashSet<>();
 
         this.setPreferredSize(new Dimension(200, 500));
-        this.setBackground(Color.YELLOW);
+        this.setBackground(new Color(234, 30, 63));
         this.setLayout(new BorderLayout());
         this.clientList = new DefaultListModel();
 
@@ -35,51 +28,15 @@ public class ClientsConnectedView extends JPanel {
         setupClientsListScrollPane();
     }
 
-    // FIXME: For testing only, to be removed
-    public void test() {
-        addClient("User 1");
-        addClient("User 2");
-        addClient("User 3");
-        addClient("User 4");
-        removeClient("User 2");
-        removeClient("User 3");
-    }
-
-
-    //
-    // FIXME: remove, to test scroll pane
-    //
-    public void test2() {
-        DefaultListModel listModel = new DefaultListModel();
-        listModel.addElement("Michal");
-        listModel.addElement("Bochnak");
-        JList list = new JList(listModel);
-        clientsListScrollPane.setViewportView(list);
-    }
-
 
     // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
-
-//    private void setupMainPanel() {
-//        mainPanel = new JPanel();
-//        mainPanel.setBackground(Color.DARK_GRAY);
-//        this.add(mainPanel);
-//    }
-
     private void setupHeader() {
-        header = new JLabel("Clients Connected:");
+        this.header = new JLabel("Clients Connected:", SwingConstants.CENTER);
+        this.header.setForeground(Color.white);
         this.add(header, BorderLayout.NORTH);
     }
-
-    /*
-    private void setupClientsList() {
-        clientsList = new JPanel();
-        clientsList.setLayout(new GridLayout(10, 1));
-        this.add(clientsList, BorderLayout.CENTER);
-    }
-    */
 
     public void setupClientsListScrollPane() {
         clientsListScrollPane = new JScrollPane();
@@ -93,7 +50,6 @@ public class ClientsConnectedView extends JPanel {
        clientsListScrollPane.setViewportView(list);
     }
 
-    // FIXME: implement
     public void removeClient(String id) {
         this.clientList.removeElement(id);
     }
@@ -112,7 +68,7 @@ public class ClientsConnectedView extends JPanel {
         this.clientsListScrollPane.setViewportView(list);
     }
 
-}
 
+}
 
 

@@ -44,6 +44,8 @@ public class RSAModel{
             message += (char) second;
             double third = ((number - second) % Math.pow(128, 3)) / Math.pow(128, 2);
             message += (char) third;
+            double fourth = ((number - third) % Math.pow(128, 4)) / Math.pow(128, 3);
+            message += (char) fourth;
 
         }
         return message;
@@ -57,10 +59,13 @@ public class RSAModel{
 
         for (int i = 0; i < array.size(); i++) {
 
+            //
             BigInteger C = new BigInteger(array.get(i).toString());
-            BigInteger M1 = C.pow(d);
-            BigInteger M = M1.mod(N);
+            BigInteger Exponent = new BigInteger(Integer.toString(d));
+            BigInteger M = C.modPow(Exponent,N);
             decrypted.add(M.intValue());
+            //
+
         }
 
         return decrypted;
@@ -90,7 +95,7 @@ public class RSAModel{
     private String stringPadding(String msg) {
 
         //make sure msg length is multiple of 3
-        while (msg.length() % 3 != 0) {
+        while (msg.length() % 4 != 0) {
             msg = msg + '\0';
         }
 
@@ -104,7 +109,7 @@ public class RSAModel{
         for (int i = 0; i < asciiValue.size(); i++) {
             value += asciiValue.get(i) * Math.pow(128, power(i));
             //4 for 4
-            if ((i + 1) % 3 == 0) {
+            if ((i + 1) % 4 == 0) {
                 converted.add(value);
                 value = 0;
             }
@@ -127,7 +132,7 @@ public class RSAModel{
 
     //calculate power of index
     private int power(int num) {
-        int power = num % 3;
+        int power = num % 4;
         return power;
     }
 

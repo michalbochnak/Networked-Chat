@@ -163,6 +163,7 @@ public class ServerController {
                 sendMessageToClient(clientSocket, msg);
                 // send update to all clients
                 sendUpdateToAllClients();
+
                 System.out.println("Done...");
             }
         }

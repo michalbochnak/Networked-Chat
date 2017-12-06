@@ -99,6 +99,7 @@ public class ServerModel {
         try {
             toUpdate.setNickname(msg.getNickname());
             toUpdate.setPublicKey(msg.getPublicKey());
+            System.out.println("publicK: " + msg.getPublicKey());
         } catch (Exception e) {
             e.printStackTrace();
         }

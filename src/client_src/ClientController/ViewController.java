@@ -1,12 +1,20 @@
 package ClientController;
 
+import ClientModel.Pair;
 import ClientView.*;
+import ServerModel.ClientPublicProfile;
 import ServerModel.ConversationMsgModel;
-import ClientModel.*;
+import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class ViewController {
 
@@ -130,8 +138,8 @@ public class ViewController {
                 mainClientController.getClientController().startThreadForDataReceiving();
                 ConversationMsgModel msg = new ConversationMsgModel();
                 // mainClientController.getClientController().getClientModel().
-              //          setClientName(name);
-              //  mainClientController.getClientController().sendInitialInfo();
+                //          setClientName(name);
+                //  mainClientController.getClientController().sendInitialInfo();
             }
         }
 
@@ -161,17 +169,19 @@ public class ViewController {
         }
 
         private boolean sumMoreThan(int a, int b, int threshold) {
+            // FIXME: make sure works for NaN
             return (a * b) > threshold;
         }
 
         private void showServerInfoErrorDialog() {
+            // FIXME: Update error msg ( p* q)
             JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
                     "Some of the provided information is incorrect.\n" +
                             "Please make sure server is running and make sure\n" +
                             "you typed server information correctly.\n" +
                             "Leave prime numbers fields empty or\n" +
                             "make sure typed in numbers are prime and their product\n" +
-                            "is greater than " + (128*128*128) + ".",
+                            "is greater than " + (128*128*128*128) + ".",
                     "Server information incorrect", JOptionPane.PLAIN_MESSAGE);
         }
 
@@ -202,6 +212,33 @@ public class ViewController {
             }
         }
 
+        private Pair pickPrimesFromFile() {
+            ArrayList<Integer> primes = new ArrayList<Integer>();
+            try {
+                //Open file
+                Scanner input = new Scanner(new File("primeNumbers.rsc"));
+
+                //Process each line
+                while (input.hasNextLine())
+                {
+                    Scanner num = new Scanner(input.nextLine());
+                    primes.add(num.nextInt());
+                }
+            }
+            catch (FileNotFoundException exception) {
+                System.err.println("File not found. Cannot load file specified by " +
+                        "command line argument.");
+            }
+
+            Random rand = new Random();
+            int n = rand.nextInt(primes.size());
+            primes.remove(n);
+            int p = primes.get(n);
+            int q = primes.get(rand.nextInt(primes.size()));
+
+            return new Pair(p, q);
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
             String ip = serverInfoView.getIpTextField().getText();
@@ -209,22 +246,27 @@ public class ViewController {
             String pNumber = serverInfoView.getpTextField().getText();
             String qNumber = serverInfoView.getqTextField().getText();
 
+            // primes not provided by user
             if (pNumber.length() <= 0 && qNumber.length() <= 0) {
                 // generate random from file
-                    // FIXME: read p & q from file
                 // try to connect
                 if (ip.length() > 0 && portString.length() > 0) {
-                   tryToConnect(ip, portString);
+                    Pair pqRandom = pickPrimesFromFile();
+                  mainClientController.getClientController().getClientModel()
+                            .setRSAInfo(pqRandom);
+                    tryToConnect(ip, portString);
                 } else {
                     showServerInfoErrorDialog();
                 }
             }
+            // primes provided by user
             else {
                 try {
                     int p = Integer.parseInt(pNumber);
                     int q = Integer.parseInt(qNumber);
-                    if ( (p != q) && isPrime(p) && isPrime(q) && sumMoreThan(p, q, (128 * 128 * 128))) {
-                        mainClientController.getClientController().getClientModel().setPq(new Pair(p, q));
+                    if ( (p != q) && isPrime(p) && isPrime(q) && sumMoreThan(p, q, (128 * 128 * 128*128))) {
+                        mainClientController.getClientController().getClientModel()
+                                .setRSAInfo(new Pair(p, q));
                         tryToConnect(ip, portString);
                     }
                     else {
@@ -235,6 +277,16 @@ public class ViewController {
                     showServerInfoErrorDialog();
                 }
             }
+
+            try {
+                for (ClientPublicProfile c : mainClientController.getClientController()
+                        .getUsersConnected()) {
+                    System.out.println(c.getPublicKey().getN());
+                }
+            } catch (Exception exc) {
+                // ignore
+            }
+
         }
     }
 
@@ -250,6 +302,84 @@ public class ViewController {
             JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
                     "Choose recipient from the users list.",
                     "Recipient not specified", JOptionPane.PLAIN_MESSAGE);
+        }
+
+
+        //encode message using RSA
+        public ArrayList encrypt(String message, Pair publicKey) {
+
+            int e = publicKey.getKey();
+            int n = publicKey.getN();
+
+            String msg = stringPadding(message);
+            ArrayList<Integer> asciiValue = convertToAscii(msg);
+            ArrayList<Integer> fourCharacters = calculateFourChars(asciiValue);
+            ArrayList<Integer> encrypted = encodeMsg(fourCharacters, e, n);
+
+            return encrypted;
+        }
+
+        //encodes array with converted ascii using RSA
+        private ArrayList<Integer> encodeMsg(ArrayList<Integer> fourCharacters, int e, int n) {
+            ArrayList<Integer> encrypted = new ArrayList<>();
+
+            BigInteger N = new BigInteger(Integer.toString(n));
+            BigInteger E = new BigInteger(Integer.toString(e));
+
+            for (int i = 0; i < fourCharacters.size(); i++) {
+                int num = fourCharacters.get(i);
+                BigInteger MSG = new BigInteger(Integer.toString(num));
+                BigInteger C1 = MSG.pow(E.intValue());
+                BigInteger C = C1.mod(N);
+                encrypted.add(C.intValue());
+            }
+
+            return encrypted;
+        }
+
+
+        //checks if string is evenly divided by 3 if not adds '\0' at the end
+        private String stringPadding(String msg) {
+
+            //make sure msg length is multiple of 3
+            while (msg.length() % 4 != 0) {
+                msg = msg + '\0';
+            }
+
+            return msg;
+        }
+
+        //convert four characters to single value using "ascii value" * 128^(pos)
+        private ArrayList<Integer> calculateFourChars(ArrayList<Integer> asciiValue) {
+            int value = 0;
+            ArrayList<Integer> converted = new ArrayList<>();
+            for (int i = 0; i < asciiValue.size(); i++) {
+                value += asciiValue.get(i) * Math.pow(128, power(i));
+                //4 for 4
+                if ((i + 1) % 4 == 0) {
+                    converted.add(value);
+                    value = 0;
+                }
+            }
+
+            return converted;
+        }
+
+        //convert string to the ascii value
+        private ArrayList<Integer> convertToAscii(String msg) {
+            ArrayList<Integer> ascii = new ArrayList<>();
+            int character;
+            for (int i = 0; i < msg.length(); i++) {
+                character = msg.charAt(i);
+                ascii.add(character);
+            }
+            return ascii;
+        }
+
+        //calculate power of index
+        private int power(int num) {
+            int power = num % 4;
+            return power;
         }
 
         @Override
@@ -269,8 +399,13 @@ public class ViewController {
             else {
                 clientChatView.getMsgsPanel().addMessage
                         ("Me (to " + msgRecipient + ")", msgToSend);
+                // encrypt the msg
+                ArrayList<Integer> encrMsg = encrypt(msgToSend,
+                        mainClientController.getClientController()
+                                .findPublicKeyByName(msgRecipient));
+
                 ConversationMsgModel msg = new ConversationMsgModel
-                        (msgSender, msgRecipient, msgToSend);
+                        (msgSender, msgRecipient, encrMsg);
                 mainClientController.getClientController().sendMessage(msg);
             }
             // check if is longer than 0

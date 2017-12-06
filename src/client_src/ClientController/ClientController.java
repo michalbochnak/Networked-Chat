@@ -10,6 +10,7 @@ import ServerModel.ConversationMsgModel;
 import ServerModel.InitialClientInfoMsgModel;
 import ServerModel.UpdateMsgModel;
 import javax.swing.*;
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 
@@ -40,6 +41,10 @@ public class ClientController {
         return clientModel;
     }
 
+    public ArrayList<ClientPublicProfile> getUsersConnected() {
+        return usersConnected;
+    }
+
     // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
@@ -65,11 +70,9 @@ public class ClientController {
 
         String ip = clientModel.getClientSocket().getLocalAddress().toString();
         int port = clientModel.getClientSocket().getLocalPort();
-        // FIXME: remove
-        Pair publicKey = new Pair(77, 88);
 
         InitialClientInfoMsgModel msg = new InitialClientInfoMsgModel
-                (name, ip, port, false, publicKey);
+                (name, ip, port, false, clientModel.getPublicKey());
 
         // send data with selected username
         clientModel.sendData(msg);
@@ -91,6 +94,25 @@ public class ClientController {
 
     public void sendMessage(Object msg) {
         clientModel.sendData(msg);
+    }
+
+    // FIXME: Returns null
+    public Pair findPublicKeyByName(String name) {
+        Pair publicKey = null;
+
+        for (int i = 0; i < usersConnected.size(); ++i) {
+            System.out.println("name: " + name + "currName: "
+                    + usersConnected.get(i).getNickname());
+            System.out.println("currKey: " + usersConnected.get(i).getPublicKey());
+            if (usersConnected.get(i).getNickname() == name) {
+                publicKey = usersConnected.get(i).getPublicKey();
+                break;
+            }
+        }
+
+        //System.out.println("Returning " + publicKey.getKey() + " " + publicKey.getN());
+
+        return publicKey;
     }
 
 
@@ -144,10 +166,68 @@ public class ClientController {
             return list;
         }
 
+        public String decrypt(ArrayList<Integer> array, Pair privateKey) {
+
+            int d = privateKey.getKey();
+            int n = privateKey.getN();
+
+            ArrayList<Integer> fourChars = decryptFourChars(array, d, n);
+            String msg = unconvertedFourChars(fourChars);
+
+            return msg;
+        }
+
+        //changes array of ascii values into string
+        private String unconvertedFourChars(ArrayList<Integer> fourChars) {
+
+            String message = "";
+
+            for (int i = 0; i < fourChars.size(); i++) {
+                double number = fourChars.get(i);
+                double first = number % 128;
+                message += (char) first;
+                double second = ((number - first) % Math.pow(128, 2)) / 128;
+                message += (char) second;
+                double third = ((number - second) % Math.pow(128, 3)) / Math.pow(128, 2);
+                message += (char) third;
+                double fourth = ((number - third) % Math.pow(128, 4)) / Math.pow(128, 3);
+                message += (char) fourth;
+
+            }
+            return message;
+        }
+
+        //decrypts encrypted message using rsa return array with sum of ascii values
+        private ArrayList<Integer> decryptFourChars(ArrayList<Integer> array, int d, int n) {
+
+            ArrayList<Integer> decrypted = new ArrayList<>();
+            BigInteger N = new BigInteger(Integer.toString(n));
+
+            for (int i = 0; i < array.size(); i++) {
+
+                //
+                BigInteger C = new BigInteger(array.get(i).toString());
+                BigInteger Exponent = new BigInteger(Integer.toString(d));
+                BigInteger M = C.modPow(Exponent,N);
+                decrypted.add(M.intValue());
+                //
+
+            }
+
+            return decrypted;
+        }
+
         private void processConversationMsg(Object data) {
             ConversationMsgModel msg = (ConversationMsgModel)data;
+
+            System.out.println("Received: ");
+            // print enc msg
+            for (Integer i : msg.getEncryptedMsg())
+                System.out.println("e: " + i);
+
+            String decrMsg = decrypt(msg.getEncryptedMsg(), clientModel.getPrivateKey());
             mainClientController.getViewController().getClientChatView().getMsgsPanel()
-                    .addMessage(msg.getSender(), msg.getTestMsg());
+                    .addMessage(msg.getSender(),decrMsg);
         }
 
         @Override

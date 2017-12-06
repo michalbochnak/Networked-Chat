@@ -3,6 +3,7 @@ package ClientModel;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigInteger;
 import java.net.Socket;
 
 
@@ -15,7 +16,9 @@ public class ClientModel {
     private Socket clientSocket;
     private ObjectInputStream dataIn;
     private ObjectOutputStream dataOut;
-    private Pair publicKey, privateKey, pq;
+    private Pair publicKey;          // (e, n)
+    private Pair privateKey;        // (d, n)
+    private Pair pq;                        // (p, q)
 
 
     // ------------------------------------------------------------------------
@@ -47,12 +50,23 @@ public class ClientModel {
         return dataIn;
     }
 
+    public Pair getPublicKey() {
+        return publicKey;
+    }
+
+    public Pair getPrivateKey() {
+        return privateKey;
+    }
 
     // ------------------------------------------------------------------------
     // Setters
     // ------------------------------------------------------------------------
     public void setPublicKey(Pair publicKey) {
         this.publicKey = publicKey;
+    }
+
+    public void setPrivateKey(Pair privateKey) {
+        this.privateKey = privateKey;
     }
 
     public void setPq(Pair pq) {
@@ -63,6 +77,16 @@ public class ClientModel {
         this.clientName = clientName;
     }
 
+    public void setRSAInfo(Pair pqPair) {
+        int p = pqPair.getKey();
+        int q = pqPair.getN();
+        //System.out.println("Setting RSA: " + p + ", " + q);
+        setPq(new Pair (p, q));
+        setPublicKey(new Pair(calculateE(p, q), calculateN(p, q)));
+        //System.out.println("Pu: " +publicKey.getKey() + " " + publicKey.getN() );
+        setPrivateKey(new Pair(calculateD(calculateE(p, q), p, q), calculateN(p, q)));
+        //System.out.println("Pr: " +privateKey.getKey() + " " + privateKey.getN() );
+    }
 
     // ------------------------------------------------------------------------
     // Methods
@@ -124,6 +148,51 @@ public class ClientModel {
             e.printStackTrace();
         }
         return data;
+    }
+
+    private int calculateD(int e, int p, int q) {
+
+        int phi = (p-1)*(q-1);
+        BigInteger E = new BigInteger(Integer.toString(e));
+        BigInteger PHI = new BigInteger(Integer.toString(phi));
+        BigInteger D = E.modInverse(PHI);
+
+        return D.intValue();
+    }
+
+    //based on geekforgeeks website
+    private int calculateE(int p, int q) {
+        int e=2;
+        int phi = (p-1)*(q-1);
+        while (e < phi)
+        {
+            // e must be co-prime to phi and
+            // smaller than phi.
+            if (gcd(e, phi)==1)
+                break;
+            else
+                e++;
+        }
+        return e;
+    }
+
+    // Returns gcd of a and b
+    //based on geekforgeeks website
+    private int gcd(int a, int h)
+    {
+        int temp;
+        while (true)
+        {
+            temp = a%h;
+            if (temp == 0)
+                return h;
+            a = h;
+            h = temp;
+        }
+    }
+
+    private int calculateN(int p, int q) {
+        return p*q;
     }
 
 

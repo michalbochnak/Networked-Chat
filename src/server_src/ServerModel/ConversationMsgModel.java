@@ -12,7 +12,7 @@ public class ConversationMsgModel implements Serializable {
     private String sender;
     private String recipient;
     private ArrayList<Integer> encryptedMsg;
-    private String testMsg;
+    //private String testMsg;
 
 
     // ------------------------------------------------------------------------
@@ -22,14 +22,14 @@ public class ConversationMsgModel implements Serializable {
         this.sender = "none";
         this.recipient = "none";
         this.encryptedMsg = new ArrayList<Integer>();
-        this.testMsg = null;
+        //this.testMsg = null;
     }
 
-    public ConversationMsgModel(String sender, String recipient, String msg) {
+    public ConversationMsgModel(String sender, String recipient, ArrayList<Integer> encrMsg) {
         this.sender = sender;
         this.recipient = recipient;
         this.encryptedMsg =null;
-        this.testMsg = msg;
+        this.encryptedMsg = encrMsg;
     }
 
 
@@ -48,9 +48,9 @@ public class ConversationMsgModel implements Serializable {
         return recipient;
     }
 
-    public String getTestMsg() {
-        return testMsg;
-    }
+//    public String getTestMsg() {
+//        return testMsg;
+//    }
 
 
     // ------------------------------------------------------------------------

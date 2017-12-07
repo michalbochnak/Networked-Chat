@@ -137,7 +137,7 @@ public class ServerController {
             }
         }
 
-        private void processConversationMsg(Object data) {
+        private synchronized void processConversationMsg(Object data) {
             ConversationMsgModel msg = (ConversationMsgModel)data;
             ClientSocketModel recipient = serverModel.findRecipientSocket(msg.getRecipient());
             // forward message
@@ -145,7 +145,7 @@ public class ServerController {
             sendMessageToClient(recipient, msg);
         }
 
-        private void processInitialMsg(Object data) {
+        private synchronized void processInitialMsg(Object data) {
             System.out.println("In processInitialMsg ");
             InitialClientInfoMsgModel msg = (InitialClientInfoMsgModel)data;
             if (mainServerController.getServerController().serverModel.clientExist

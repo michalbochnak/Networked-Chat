@@ -191,7 +191,7 @@ public class ViewController {
 
         private void showPrimesNotFoundDialog() {
             JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
-                    "File do not contain enoough prime numbers.",
+                    "File do not contain enough prime numbers.",
                     "Primes read error", JOptionPane.PLAIN_MESSAGE);
         }
 

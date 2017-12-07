@@ -134,7 +134,7 @@ public class ClientController {
     // ------------------------------------------------------------------------
     public class waitForServerData implements Runnable {
 
-        private void processReceivedData(Object data) {
+        private synchronized void processReceivedData(Object data) {
             String className = data.getClass().getSimpleName().toString();
 
             System.out.println("Class name: " + className);

@@ -1,6 +1,14 @@
-
-
-
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+// KeyPairModel.java
+//
 
 package ClientController;
 
@@ -14,6 +22,9 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 
+//
+// Class description...
+//
 public class ClientController {
 
     // ------------------------------------------------------------------------

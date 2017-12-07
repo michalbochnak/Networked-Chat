@@ -35,6 +35,7 @@ public class ServerModel {
         String tempIp = "none";
         try {
             tempIp = InetAddress.getLocalHost().getHostAddress();
+            System.out.println(tempIp);
         } catch (Exception e) {
             System.out.println("Cannot retrieve IP Address");
             e.printStackTrace();

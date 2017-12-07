@@ -24,8 +24,8 @@ public class MenuBarView extends  JMenuBar {
     // Methods
     // ------------------------------------------------------------------------
     private void setupFileMenu() {
-        FileMenu = new JMenu("qrwefqwe");
-        FileMenu.add(new JMenuItem("Test"));
+        FileMenu = new JMenu("File");
+        FileMenu.add(new JMenuItem("Exit"));
         this.add(FileMenu);
     }
 

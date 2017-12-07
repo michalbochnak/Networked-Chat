@@ -449,19 +449,37 @@ public class ViewController {
     public class HelpListener implements  ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            System.exit(1);
+
+            JOptionPane.showMessageDialog(null,
+                    "GUI based programs in Java Swing that allows multiple\n" +
+                            "people to connect together and send encrypted messages\n" +
+                            "to a specific connected person. The Java Socket and \n" +
+                            "ServerSocket classes are used for the networking implementation.\n" +
+                            "The RSA encryption/decryption code is designed and written\n" +
+                            "by the authors of this program based on the resources provided \n" +
+                            "by the Professor Troy in the given assignment. To Send a message\n" +
+                            "select a person from the list and type a message server will\n" +
+                            "transfer encrypted message to the selected person. Message will\n" +
+                            "be decrypted on receiver side.\n",
+                    "Help",
+                    JOptionPane.PLAIN_MESSAGE);
         }
 
     }
 
     public class AboutListener implements  ActionListener {
 
+
         public void actionPerformed(ActionEvent e) {
-            System.exit(1);
+            JOptionPane.showMessageDialog(null,
+                    "Project 5 UIC Fall 2017\n" +
+                             "Networked Chat with RSA Encryption/Decryption\n\n" +
+                             "Program Authors: \n" +
+                             "Artur Wojcik        - awojci5\n" +
+                             "Michal Bochank  - mbochn2\n" +
+                             "Jakub Glebocki   - jglebo2\n\n",
+                    "About",
+                    JOptionPane.PLAIN_MESSAGE);
         }
-
     }
-
 }
-
-

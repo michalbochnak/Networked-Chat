@@ -38,11 +38,11 @@ public class ViewController {
     public ViewController(MainClientController mcc) {
         mainClientController = mcc;
         setupNameView();
-        serverInfoView = new ServerInfoView();
-        clientChatView = new ClientChatView();
+        serverInfoView = ServerInfoView.getInstance();
+        clientChatView = ClientChatView.getInstance();
         addMenuBarListeners();
 
-        switch (mcc.getChatStage()) {
+        switch (mainClientController.getChatStage()) {
             case 1:
                 showServerInfoPrompt();
                 break;
@@ -59,6 +59,8 @@ public class ViewController {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+
+
     public ClientChatView getClientChatView() {
         return clientChatView;
     }
@@ -92,7 +94,7 @@ public class ViewController {
     }
 
     private void setupNameView() {
-        nameView = new NameView();
+        nameView = NameView.getInstance();
         nameView.addOkButtonActionListener(new NameViewOkButtonListener());
     }
 
@@ -473,13 +475,16 @@ public class ViewController {
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null,
                     "Project 5 UIC Fall 2017\n" +
-                             "Networked Chat with RSA Encryption/Decryption\n\n" +
-                             "Program Authors: \n" +
-                             "Artur Wojcik        - awojci5\n" +
-                             "Michal Bochank  - mbochn2\n" +
-                             "Jakub Glebocki   - jglebo2\n\n",
+                            "Networked Chat with RSA Encryption/Decryption\n\n" +
+                            "Program Authors: \n" +
+                            "Artur Wojcik        - awojci5\n" +
+                            "Michal Bochnak  - mbochn2\n" +
+                            "Jakub Glebocki   - jglebo2\n\n",
                     "About",
                     JOptionPane.PLAIN_MESSAGE);
         }
     }
+
 }
+
+

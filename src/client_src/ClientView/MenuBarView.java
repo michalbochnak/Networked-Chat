@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 public class MenuBarView extends  JMenuBar {
 
+    private static final MenuBarView instance = new MenuBarView();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -17,7 +19,7 @@ public class MenuBarView extends  JMenuBar {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public MenuBarView() {
+    private MenuBarView() {
         setupFileMenu();
         setupHelpMenu();
     }
@@ -25,6 +27,10 @@ public class MenuBarView extends  JMenuBar {
     // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
+    public static MenuBarView getInstance() {
+        return instance;
+    }
+
     private void setupFileMenu() {
         FileMenu = new JMenu("File");
         FileMenu.add(new JMenuItem("Quit"));

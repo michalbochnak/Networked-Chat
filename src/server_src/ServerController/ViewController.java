@@ -75,7 +75,7 @@ public class ViewController {
     }
 
     private void setupClientsList() {
-        clientsList = new ClientsConnectedView();
+        clientsList = ClientsConnectedView.getInstance();
         clientsList.setBounds(20, 90, 200,200);
         mainPanel.add(clientsList);
     }
@@ -88,13 +88,13 @@ public class ViewController {
     }
 
     private void setupServerInfo() {
-        serverInfo = new ServerInfoView("none", "none");
+        serverInfo = ServerInfoView.getInstance();
         serverInfo.setBounds(20, 20, 200, 50);
         mainPanel.add(serverInfo);
     }
 
     private void setupMenuBar() {
-        menuBar = new MenuBarView();
+        menuBar = MenuBarView.getInstance();
         frame.setJMenuBar(menuBar);
     }
 
@@ -153,7 +153,7 @@ public class ViewController {
                             "Networked Chat with RSA Encryption/Decryption\n\n" +
                             "Program Authors: \n" +
                             "Artur Wojcik        - awojci5\n" +
-                            "Michal Bochank  - mbochn2\n" +
+                            "Michal Bochnak  - mbochn2\n" +
                             "Jakub Glebocki   - jglebo2\n\n",
                     "About",
                     JOptionPane.PLAIN_MESSAGE);

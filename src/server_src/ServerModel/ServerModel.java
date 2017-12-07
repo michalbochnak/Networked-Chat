@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class ServerModel {
 
+    private static final ServerModel instance = new ServerModel();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -20,7 +22,7 @@ public class ServerModel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public ServerModel() {
+    private ServerModel() {
         startTheServer();
         clientsSockets = new ArrayList<ClientSocketModel>();
         receivedData = null;
@@ -31,6 +33,10 @@ public class ServerModel {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+    public static ServerModel getInstance() {
+        return instance;
+    }
+
     public String getIpAddress() {
         String tempIp = "none";
         try {

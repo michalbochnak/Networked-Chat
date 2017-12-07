@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 public class MenuBarView extends  JMenuBar {
 
+    private static final MenuBarView instance = new MenuBarView();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -14,11 +16,17 @@ public class MenuBarView extends  JMenuBar {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public MenuBarView() {
+    private MenuBarView() {
         setupFileMenu();
         setupHelpMenu();
     }
 
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
+    public static MenuBarView getInstance() {
+        return instance;
+    }
 
     // ------------------------------------------------------------------------
     // Methods

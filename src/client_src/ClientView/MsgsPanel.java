@@ -5,6 +5,8 @@ import java.awt.*;
 
 public class MsgsPanel extends JPanel {
 
+    private static final MsgsPanel instance = new MsgsPanel();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -16,7 +18,7 @@ public class MsgsPanel extends JPanel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public MsgsPanel () {
+    private MsgsPanel () {
         this.setPreferredSize(new Dimension(200, 200));
         this.setBackground(new Color(234, 30, 63));
         this.setLayout(new BorderLayout());
@@ -26,6 +28,12 @@ public class MsgsPanel extends JPanel {
         setupMsgsScrollPane();
     }
 
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
+    public static MsgsPanel getInstance() {
+        return instance;
+    }
 
     // ------------------------------------------------------------------------
     // Methods

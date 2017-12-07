@@ -2,6 +2,7 @@ package ServerView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
 //
 // Class contains two labels that will hold information about the
@@ -9,6 +10,8 @@ import java.awt.*;
 //
 
 public class ServerInfoView extends JPanel {
+
+    private static final ServerInfoView instance = new ServerInfoView("none", "none");
 
     // ------------------------------------------------------------------------
     // Members
@@ -21,7 +24,7 @@ public class ServerInfoView extends JPanel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public ServerInfoView (String ip, String port) {
+    private ServerInfoView (String ip, String port) {
         setupTitleLabel();
         setupIpLabel(ip);
         setupPortLabel(port);
@@ -30,6 +33,12 @@ public class ServerInfoView extends JPanel {
         this.setLayout(new GridLayout(3, 1));
     }
 
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
+    public static ServerInfoView getInstance() {
+        return instance;
+    }
 
     // ------------------------------------------------------------------------
     // Setters
@@ -46,6 +55,11 @@ public class ServerInfoView extends JPanel {
         this.setBackground(color);
     }
 
+    public void setServerInfoView (String ip, String port) {
+        setupTitleLabel();
+        setupIpLabel(ip);
+        setupPortLabel(port);
+    }
 
     // ------------------------------------------------------------------------
     // Methods

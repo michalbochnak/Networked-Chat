@@ -9,6 +9,8 @@ import java.net.Socket;
 
 public class ClientModel {
 
+    private static final ClientModel instance = new ClientModel();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -24,7 +26,7 @@ public class ClientModel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public ClientModel() {
+    private ClientModel() {
         clientName = "none";
         clientSocket = null;
         dataOut = null;
@@ -38,6 +40,10 @@ public class ClientModel {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+    public static ClientModel getInstance() {
+        return instance;
+    }
+
     public String getClientName() {
         return clientName;
     }

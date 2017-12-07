@@ -19,7 +19,7 @@ public class ServerController {
     // Constructors
     // ------------------------------------------------------------------------
     public ServerController(MainServerController mainServerController) {
-        serverModel = new ServerModel();
+        serverModel = ServerModel.getInstance() ;
         serverModel.startClientListenerThread(new Thread(new waitForClient()));
         this.mainServerController = mainServerController;
     }

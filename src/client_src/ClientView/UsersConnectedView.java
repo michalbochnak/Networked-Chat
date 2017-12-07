@@ -8,6 +8,8 @@ import java.util.Set;
 
 public class UsersConnectedView extends JPanel {
 
+    private static final UsersConnectedView instance = new UsersConnectedView();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -20,7 +22,7 @@ public class UsersConnectedView extends JPanel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public UsersConnectedView() {
+    private UsersConnectedView() {
         this.setPreferredSize(new Dimension(200, 500));
         this.setBackground(new Color(184, 30, 63));
         this.setLayout(new BorderLayout());
@@ -29,6 +31,13 @@ public class UsersConnectedView extends JPanel {
 
         setupHeader();
         setupClientsListScrollPane();
+    }
+
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
+    public static UsersConnectedView getInstance() {
+        return instance;
     }
 
 

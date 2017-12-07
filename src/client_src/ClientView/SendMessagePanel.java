@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 public class SendMessagePanel extends JPanel {
 
+    private static final SendMessagePanel instance = new SendMessagePanel();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -16,7 +18,7 @@ public class SendMessagePanel extends JPanel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public SendMessagePanel () {
+    private SendMessagePanel () {
         this.setPreferredSize(new Dimension(300, 150));
         this.setBackground(Color.GRAY);
         this.setLayout(new BorderLayout());
@@ -29,10 +31,13 @@ public class SendMessagePanel extends JPanel {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+    public static SendMessagePanel getInstance() {
+        return instance;
+    }
+
     public String getTypedMessage() {
         return typeMsgTextArea.getText();
     }
-
 
     // ------------------------------------------------------------------------
     // Methods

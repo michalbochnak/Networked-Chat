@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 public class ServerInfoView {
 
+    private static final ServerInfoView instance = new ServerInfoView();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -17,7 +19,7 @@ public class ServerInfoView {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public ServerInfoView () {
+    private ServerInfoView () {
         setupFrame();
         addInfoLabels();
         setupTextFields();
@@ -32,6 +34,10 @@ public class ServerInfoView {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+    public static ServerInfoView getInstance() {
+        return instance;
+    }
+
     public JTextField getIpTextField() {
         return ipTextField;
     }

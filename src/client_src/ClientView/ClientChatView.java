@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class ClientChatView extends JPanel {
 
+    private static final ClientChatView instance = new ClientChatView();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -24,7 +26,7 @@ public class ClientChatView extends JPanel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public ClientChatView() {
+    private ClientChatView() {
         setupFrame();
         setupMenuBar();
         setupMainPanel();
@@ -41,6 +43,10 @@ public class ClientChatView extends JPanel {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+    public static ClientChatView getInstance() {
+        return instance;
+    }
+
     public JFrame getFrame() {
         return frame;
     }
@@ -81,7 +87,7 @@ public class ClientChatView extends JPanel {
         frame = new JFrame("Chat Client");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //frame.setLayout(new BorderLayout());
-        frame.setSize(392, 528);
+        frame.setSize(392, 500);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
     }
@@ -95,33 +101,33 @@ public class ClientChatView extends JPanel {
     }
 
     private void setupServerInfo() {
-        serverInfo = new ServerInfoView("-", "-");
+        serverInfo = ServerInfoView.getInstance();
         serverInfo.setBounds(195, 10, 180, 60);
         serverInfo.setBackgroundColor(null);
         mainPanel.add(serverInfo);
     }
 
     private void setupClientsList() {
-        clientsList = new UsersConnectedView();
+        clientsList = UsersConnectedView.getInstance();
         //clientsList.setPreferredSize(new Dimension(200,600));
         clientsList.setBounds(10, 85, 365, 100);
         mainPanel.add(clientsList);
     }
 
     private void setupMsgsPanel() {
-        msgsPanel = new MsgsPanel();
+        msgsPanel = MsgsPanel.getInstance();
         msgsPanel.setBounds(10, 190, 365, 200);
         mainPanel.add(msgsPanel);
     }
 
     private void setupSendMsgPanel() {
-        sendMsgPanel = new SendMessagePanel();
+        sendMsgPanel = SendMessagePanel.getInstance();
         sendMsgPanel.setBounds(10, 395, 365, 33);
         mainPanel.add(sendMsgPanel);
     }
 
     private void setupMenuBar() {
-        menuBar = new ClientView.MenuBarView();
+        menuBar = ClientView.MenuBarView.getInstance();
         frame.setJMenuBar(menuBar);
     }
 

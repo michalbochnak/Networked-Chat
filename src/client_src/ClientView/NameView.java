@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 public class NameView {
 
+    private static final NameView instance = new NameView();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -16,7 +18,7 @@ public class NameView {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public NameView () {
+    private NameView () {
         setupFrame();
         addInfoLabel();
         setupNameTextField();
@@ -29,6 +31,10 @@ public class NameView {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+    public static NameView getInstance() {
+        return instance;
+    }
+
     public JTextField getNameTextField() {
         return nameTextField;
     }

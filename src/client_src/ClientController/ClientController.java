@@ -27,6 +27,7 @@ import java.util.ArrayList;
 //
 public class ClientController {
 
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -40,7 +41,7 @@ public class ClientController {
     // ------------------------------------------------------------------------
     public ClientController(MainClientController mcc) {
         mainClientController = mcc;
-        clientModel = new ClientModel();
+        clientModel = ClientModel.getInstance();
         usersConnected = null;
     }
 
@@ -48,6 +49,7 @@ public class ClientController {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+
     public ClientModel getClientModel() {
         return clientModel;
     }

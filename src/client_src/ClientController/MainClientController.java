@@ -3,6 +3,8 @@ package ClientController;
 
 public class MainClientController {
 
+    //private static final MainClientController instance = new MainClientController();
+
     // ------------------------------------------------------------------------
     // Members
     // ------------------------------------------------------------------------
@@ -24,6 +26,7 @@ public class MainClientController {
     // ------------------------------------------------------------------------
     // Getters
     // ------------------------------------------------------------------------
+
     public int getChatStage() {
         return this.chatStage;
     }

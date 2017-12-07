@@ -1,10 +1,14 @@
 package ServerView;
 
+import ClientModel.ClientModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class ClientsConnectedView extends JPanel {
+
+    private static final ClientsConnectedView instance = new ClientsConnectedView();
 
     // ------------------------------------------------------------------------
     // Members
@@ -16,7 +20,7 @@ public class ClientsConnectedView extends JPanel {
     // ------------------------------------------------------------------------
     // Constructors
     // ------------------------------------------------------------------------
-    public ClientsConnectedView() {
+    private ClientsConnectedView() {
 
         this.setPreferredSize(new Dimension(200, 500));
         this.setBackground(new Color(234, 30, 63));
@@ -28,6 +32,12 @@ public class ClientsConnectedView extends JPanel {
         setupClientsListScrollPane();
     }
 
+    // ------------------------------------------------------------------------
+    // Getters
+    // ------------------------------------------------------------------------
+    public static ClientsConnectedView getInstance() {
+        return instance;
+    }
 
     // ------------------------------------------------------------------------
     // Methods

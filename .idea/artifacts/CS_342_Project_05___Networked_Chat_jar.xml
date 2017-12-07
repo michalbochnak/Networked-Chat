@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CS 342 Project 05 - Networked Chat:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CS_342_Project_05___Networked_Chat_jar</output-path>
+    <root id="archive" name="CS 342 Project 05 - Networked Chat.jar">
+      <element id="module-output" name="CS 342 Project 05 - Networked Chat" />
+    </root>
+  </artifact>
+</component>

@@ -7,7 +7,7 @@
 // Dec 7, 2017
 // UIC, Pat Troy
 //
-// KeyPairModel.java
+// ClientController.java
 //
 
 package ClientController;

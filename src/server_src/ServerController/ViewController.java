@@ -3,6 +3,8 @@ package ServerController;
 import ServerView.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ViewController {
@@ -28,6 +30,7 @@ public class ViewController {
         setupMainPanel();
         setupServerInfo();
         setupClientsList();
+        addMenuItemsListeners();
         frame.setVisible(true);
     }
 
@@ -103,6 +106,37 @@ public class ViewController {
     public void updateClientsList(ArrayList<String> clients) {
         this.clientsList.clear();
         this.clientsList.updateWholeList(clients);
+    }
+
+    public void addMenuItemsListeners() {
+        menuBar.addQuitListener(new QuitListener());
+        menuBar.addHelpListener(new HelpListener());
+        menuBar.addAboutListener(new AboutListener());
+
+    }
+
+    public class QuitListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            System.exit(1);
+        }
+
+    }
+
+    public class HelpListener implements  ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            System.exit(1);
+        }
+
+    }
+
+    public class AboutListener implements  ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            System.exit(1);
+        }
+
     }
 
 

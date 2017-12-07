@@ -4,8 +4,6 @@ import ClientModel.Pair;
 import ClientView.*;
 import ServerModel.ClientPublicProfile;
 import ServerModel.ConversationMsgModel;
-import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,6 +40,7 @@ public class ViewController {
         setupNameView();
         serverInfoView = new ServerInfoView();
         clientChatView = new ClientChatView();
+        addMenuBarListeners();
 
         switch (mcc.getChatStage()) {
             case 1:
@@ -101,6 +100,11 @@ public class ViewController {
         this.clientChatView.updateClientsList(clients);
     }
 
+    private void addMenuBarListeners() {
+        clientChatView.getMenuBar().addQuitListener(new QuitListener());
+        clientChatView.getMenuBar().addHelpListener(new HelpListener());
+        clientChatView.getMenuBar().addAboutListener(new AboutListener());
+    }
 
     // ------------------------------------------------------------------------
     // Inner classes
@@ -168,13 +172,11 @@ public class ViewController {
             return true;
         }
 
-        private boolean sumMoreThan(int a, int b, int threshold) {
-            // FIXME: make sure works for NaN
+        private boolean productMoreThan(int a, int b, int threshold) {
             return (a * b) > threshold;
         }
 
         private void showServerInfoErrorDialog() {
-            // FIXME: Update error msg ( p* q)
             JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
                     "Some of the provided information is incorrect.\n" +
                             "Please make sure server is running and make sure\n" +
@@ -184,6 +186,14 @@ public class ViewController {
                             "is greater than " + (128*128*128*128) + ".",
                     "Server information incorrect", JOptionPane.PLAIN_MESSAGE);
         }
+
+        private void showPrimesNotFoundDialog() {
+            JOptionPane.showMessageDialog(nameView.getEnterNameFrame(),
+                    "File do not contain enoough prime numbers.",
+                    "Primes read error", JOptionPane.PLAIN_MESSAGE);
+        }
+
+
 
         private void tryToConnect(String ip, String portString) {
             int port = -1;
@@ -219,10 +229,12 @@ public class ViewController {
                 Scanner input = new Scanner(new File("primeNumbers.rsc"));
 
                 //Process each line
-                while (input.hasNextLine())
-                {
-                    Scanner num = new Scanner(input.nextLine());
-                    primes.add(num.nextInt());
+                while (input.hasNextLine()) {
+                    Scanner line = new Scanner(input.nextLine());
+                    int num = line.nextInt();
+                    if (isPrime(num)) {
+                        primes.add(num);
+                    }
                 }
             }
             catch (FileNotFoundException exception) {
@@ -230,11 +242,18 @@ public class ViewController {
                         "command line argument.");
             }
 
+             if (primes.size() < 2) {
+                return null;
+             }
+
             Random rand = new Random();
             int n = rand.nextInt(primes.size());
-            primes.remove(n);
             int p = primes.get(n);
+            primes.remove(n);
             int q = primes.get(rand.nextInt(primes.size()));
+
+            if (!productMoreThan(p, q, (128*128*128*128)))
+                    return null;
 
             return new Pair(p, q);
         }
@@ -252,10 +271,16 @@ public class ViewController {
                 // try to connect
                 if (ip.length() > 0 && portString.length() > 0) {
                     Pair pqRandom = pickPrimesFromFile();
-                  mainClientController.getClientController().getClientModel()
-                            .setRSAInfo(pqRandom);
-                    tryToConnect(ip, portString);
-                } else {
+                    if (pqRandom != null) {
+                        mainClientController.getClientController().getClientModel()
+                                .setRSAInfo(pqRandom);
+                        tryToConnect(ip, portString);
+                    }
+                    else {
+                        showPrimesNotFoundDialog();
+                    }
+                }
+                else {
                     showServerInfoErrorDialog();
                 }
             }
@@ -264,7 +289,7 @@ public class ViewController {
                 try {
                     int p = Integer.parseInt(pNumber);
                     int q = Integer.parseInt(qNumber);
-                    if ( (p != q) && isPrime(p) && isPrime(q) && sumMoreThan(p, q, (128 * 128 * 128*128))) {
+                    if ( (p != q) && isPrime(p) && isPrime(q) && productMoreThan(p, q, (128 * 128 * 128*128))) {
                         mainClientController.getClientController().getClientModel()
                                 .setRSAInfo(new Pair(p, q));
                         tryToConnect(ip, portString);
@@ -413,7 +438,29 @@ public class ViewController {
         }
     }
 
+    public class QuitListener implements  ActionListener {
 
+        public void actionPerformed(ActionEvent e) {
+            System.exit(1);
+        }
+
+    }
+
+    public class HelpListener implements  ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            System.exit(1);
+        }
+
+    }
+
+    public class AboutListener implements  ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            System.exit(1);
+        }
+
+    }
 
 }
 

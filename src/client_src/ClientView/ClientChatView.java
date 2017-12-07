@@ -13,7 +13,7 @@ public class ClientChatView extends JPanel {
     // ------------------------------------------------------------------------
     private JFrame frame;
     private JPanel mainPanel;
-    private ServerView.MenuBarView menuBar;
+    private ClientView.MenuBarView menuBar;
     private ServerView.ServerInfoView serverInfo;
     private UsersConnectedView clientsList;
     private MsgsPanel msgsPanel;
@@ -53,7 +53,7 @@ public class ClientChatView extends JPanel {
         return clientsList;
     }
 
-    public ServerView.MenuBarView getMenuBar() {
+    public ClientView.MenuBarView getMenuBar() {
         return menuBar;
     }
 
@@ -116,12 +116,12 @@ public class ClientChatView extends JPanel {
 
     private void setupSendMsgPanel() {
         sendMsgPanel = new SendMessagePanel();
-        sendMsgPanel.setBounds(10, 395, 365, 70);
+        sendMsgPanel.setBounds(10, 395, 365, 33);
         mainPanel.add(sendMsgPanel);
     }
 
     private void setupMenuBar() {
-        menuBar = new MenuBarView();
+        menuBar = new ClientView.MenuBarView();
         frame.setJMenuBar(menuBar);
     }
 

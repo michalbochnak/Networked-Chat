@@ -96,6 +96,7 @@ public class ServerModel {
 
     public void updateClientInfo(InitialClientInfoMsgModel msg) {
         ClientSocketModel toUpdate = findClientByIpAndPort(msg.getIp(), msg.getPort());
+        System.out.println("Client: " + msg.getIp() + msg.getPort());
         try {
             toUpdate.setNickname(msg.getNickname());
             toUpdate.setPublicKey(msg.getPublicKey());
@@ -113,9 +114,15 @@ public class ServerModel {
             System.out.println("params:  " + port
                     + ", ip: " + ip);
             System.out.println("socket :  " + temp.getPort()
-                    + ", ip: " + temp.getLocalAddress().toString());
+                    + ", ip: " + temp.getRemoteSocketAddress().toString());
 
-            if (temp.getPort() == port && temp.getLocalAddress().toString().equals(ip)) {
+            String[] parts = temp.getRemoteSocketAddress().toString()
+                    .split("\\:"); // String array, each element is text between dots
+
+            String remoteIp = parts[0];
+
+
+            if (temp.getPort() == port && remoteIp.equals(ip)) {
                 System.out.println("Found");
                 return clientsSockets.get(i);
             }

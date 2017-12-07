@@ -148,7 +148,8 @@ public class ServerController {
         private void processInitialMsg(Object data) {
             System.out.println("In processInitialMsg ");
             InitialClientInfoMsgModel msg = (InitialClientInfoMsgModel)data;
-            if (mainServerController.getServerController().serverModel.clientExist(msg.getNickname())) {
+            if (mainServerController.getServerController().serverModel.clientExist
+                    (msg.getNickname())) {
                 // respond to client that client name is not available
                 msg.setNameAvailable(false);
                 sendMessageToClient(clientSocket, msg);
@@ -156,7 +157,8 @@ public class ServerController {
             else {
                 // associate client name with socket
                 serverModel.updateClientInfo(msg);
-                mainServerController.getViewController().updateClientsList(serverModel.getClientsNamesList());
+                mainServerController.getViewController().updateClientsList
+                        (serverModel.getClientsNamesList());
                 // sent true back
                 msg.setNameAvailable(true);
                 // send response

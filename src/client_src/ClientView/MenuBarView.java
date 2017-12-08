@@ -10,7 +10,7 @@
 
 
 //The java class ClientView is a class in which it shows the client. This si where
-//classes are called in order for them to setup and put the peices(frames) together
+//classes are called in order for them to setup and put the pieces(frames) together
 // and link them. In this File it sets up the Menu in which are "Quit, Help, About"
 //buttons the user can click and use,
 

@@ -8,7 +8,7 @@
 // UIC, Pat Troy
 //
 
-//The ServerInfoView Message Box allowes to display server Info Such
+//The ServerInfoView Message Box allows to display server Info Such
 // as the IP, Port NUmber, PQ Label. It also sets up the text field
 // for each of these items so they can be placed there. It also adds
 //adds an action listener for the user to click okay.

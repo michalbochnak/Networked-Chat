@@ -9,7 +9,7 @@
 //
 
 
-//The send Message Panel Java class allows The suer to send a message. It sets up
+//The send Message Panel Java class allows The user to send a message. It sets up
 // the send button, gets the typed message after user types it, and sets up the text
 //box in which the user is allowed to type into.
 

@@ -11,7 +11,7 @@
 //The Java Class ClientModelModels the Client Program. It uses Getter functions
 // to get information such as Name, socket, Data,Public Key, as well as private
 // Key. It sets ClientName, RSA information and client Name. It set's up different
-// streams such as recieving and sending Data. It also does different calculations
+// streams such as receiving and sending Data. It also does different calculations
 // based on which were derived form the geeks website.
 
 package ClientModel;

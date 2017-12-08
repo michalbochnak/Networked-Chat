@@ -11,7 +11,7 @@
 
 ////The ClientSocketModel java class extends the socket class which allows it
 // to create ClientSocket and set it to the on we are currently using. Basically
-// the Client Sokcet gets Modelled in this  class. It Gets Nickname, Socket, Data
+// the Client Socket gets Modelled in this  class. It Gets Nickname, Socket, Data
 // in & out, and public Key. It also has setters to the Nickname and Public Key.
 
 

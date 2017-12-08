@@ -11,7 +11,7 @@
 //The name View java Class is a class in which it creates a new instance for the
 // name of the user who wants to Join the chat. This is a little message dialog
 // box which displays and prompts the person to enter their name and click "Ok"
-// in order to join the webchat. It sets the background color, Name Field, and
+// in order to join the WebChat. It sets the background color, Name Field, and
 //has a listener to know when to go onto the next step of the process
 //
 

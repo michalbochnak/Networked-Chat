@@ -10,7 +10,7 @@
 
 //Server Controller is where the server is being controlled in this java class.
 // It process a New Client, Deals with client being disconnected, removes the
-// client in case user decides to disconnect or some other arbitrary sitation
+// client in case user decides to disconnect or some other arbitrary situation
 // happens. In the event of quitting it updates the client by removing it and
 // updating the list. It allows for a message to be sent to the client. It waits
 // for the client to send data and then deals with that data appropriately(by

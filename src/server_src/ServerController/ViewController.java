@@ -11,7 +11,7 @@
 
 //The java Class ViewController is a class which controls what gets displayed
 // to the screen for the server. It has getter functions to get the Frame, main
-// panel, CLient List, Menu Bar, Server Info, and Main Server Controller. It sets
+// panel, Client List, Menu Bar, Server Info, and Main Server Controller. It sets
 // up each of those in this class and allows for the menu item Listeners to be
 // active(so when user clicks it, it responds appropriately).
 

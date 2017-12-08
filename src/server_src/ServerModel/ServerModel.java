@@ -99,7 +99,7 @@ public class ServerModel {
     // ------------------------------------------------------------------------
     private void startTheServer() {
         try {
-            this.server = new ServerSocket(5000);
+            this.server = new ServerSocket(0);
         } catch (IOException e) {
             System.out.println("Cannot create new Server Socket");
             e.printStackTrace();

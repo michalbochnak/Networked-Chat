@@ -32,9 +32,6 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 
-//
-// Class description...
-//
 public class ClientController {
 
 
@@ -119,7 +116,6 @@ public class ClientController {
         clientModel.sendData(msg);
     }
 
-    // FIXME: Returns null
     public Pair findPublicKeyByName(String name) {
         Pair publicKey = null;
 

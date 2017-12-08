@@ -1,3 +1,21 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The Java class ClientsConnectedView extends JPanel. Basically this class allows
+// the visibility of clients connected to the server. It setups the header, and
+// setups client List Scroll panel. It also ahs the capability to remove a client,
+// clear the name from the List and Update the whole list.
+
+
+
 package ServerView;
 
 import ClientModel.ClientModel;

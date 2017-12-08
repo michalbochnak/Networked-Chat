@@ -1,3 +1,20 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The java class ServerInfoView is a class in which It displays the Servers info,
+// meaning the Title, the IP and the Port. It has Setter functions to set those
+// things as well as extra add-ons like Background color.
+
+
+
 package ServerView;
 
 import javax.swing.*;

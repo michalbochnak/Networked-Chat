@@ -1,3 +1,21 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+//
+
+//Java class UsersConnectedView Allows the users who are connected to be displayed
+// in a dialog box. It get's setup at the top of the header, it adds the client,
+// updates the list for the new view as well as allows selection of which person
+//you want to send the message to.
+
+
+
 package ClientView;
 
 import javax.swing.*;

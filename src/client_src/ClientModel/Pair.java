@@ -1,3 +1,19 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The java Class Pair is a class in which it has a Key and a n number to which
+// it uses, sets, and gets the key in order for it to be usable and manageable
+
+
+
 package ClientModel;
 
 import java.io.Serializable;

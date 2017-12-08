@@ -1,3 +1,22 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The Java class ClientChatView is the java class which displays the ClientChatView
+// Window which allows the user to perform user-interface(Type into dialog box,
+// Click on help menu, etc). It set's up all the panels to their appropriate place
+// for user-interaction. It also displays Server connected info. It sets bounds,
+//fonts foreground displays name label and much more.
+
+
+
 package ClientView;
 
 import ServerView.MenuBarView;

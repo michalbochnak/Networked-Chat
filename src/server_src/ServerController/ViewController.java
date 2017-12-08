@@ -1,3 +1,24 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The java Class ViewController is a class which controls what gets displayed
+// to the screen for the server. It has getter functions to get the Frame, main
+// panel, Client List, Menu Bar, Server Info, and Main Server Controller. It sets
+// up each of those in this class and allows for the menu item Listeners to be
+// active(so when user clicks it, it responds appropriately).
+
+
+
+
+
 package ServerController;
 
 import ServerView.*;

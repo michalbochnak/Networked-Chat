@@ -1,3 +1,21 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The java class ClientView is a class in which it shows the client. This si where
+//classes are called in order for them to setup and put the pieces(frames) together
+// and link them. In this File it sets up the Menu in which are "Quit, Help, About"
+//buttons the user can click and use,
+
+
+
 package ClientView;
 
 import ClientController.ViewController;

@@ -1,3 +1,19 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+//The Java Class ClientModelModels the Client Program. It uses Getter functions
+// to get information such as Name, socket, Data,Public Key, as well as private
+// Key. It sets ClientName, RSA information and client Name. It set's up different
+// streams such as recieving and sending Data. It also does different calculations
+// based on which were derived form the geeks website.
+
 package ClientModel;
 
 import java.io.IOException;

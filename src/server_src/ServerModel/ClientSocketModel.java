@@ -1,3 +1,21 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+////The ClientSocketModel java class extends the socket class which allows it
+// to create ClientSocket and set it to the on we are currently using. Basically
+// the Client Sokcet gets Modelled in this  class. It Gets Nickname, Socket, Data
+// in & out, and public Key. It also has setters to the Nickname and Public Key.
+
+
+
 package ServerModel;
 
 import ClientModel.Pair;

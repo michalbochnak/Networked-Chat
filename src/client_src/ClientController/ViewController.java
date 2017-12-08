@@ -1,3 +1,24 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+//ViewController java class is a class in which it basically it lets the user view
+//different things of the interface. It allwos the user to see the name, Show server
+// Information, display the char window as well as hide all windows. When a new user
+// connectes it also allows to update the Client List. It has a few differnt menu items:
+// About, Help, & Quit. When user clicks on help and about, it explains the program
+// to the player as well as helps them on how to user the interface. Quit allows for
+// the chats to be disconnected when user uses the quit button. It also Allows user
+// to send a message in which the program is listening for.
+
+
+
 package ClientController;
 
 import ClientModel.Pair;

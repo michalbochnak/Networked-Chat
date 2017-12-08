@@ -16,7 +16,7 @@ Location for “primeNumbers.rsc”
                         ****************************
 *****  FILE HAS TO BE IN NETWORKED-CHAT FOLDER AND NUMBERS HAVE TO BE  *****
 *****     PRIMES PROGRAM WILL NOT READ IN NUMBERS OTHER THAN PRIMES    *****
-*****        FOR OTHER RESTRICTIONS READ THE DESCRYPTIONS ABOVE        *****
+*****        FOR OTHER RESTRICTIONS READ THE DESCRIPTIONS ABOVE        *****
                         ****************************
                         
                        

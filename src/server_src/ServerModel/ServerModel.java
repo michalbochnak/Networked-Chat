@@ -1,3 +1,23 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The ServerModel java class is what builds the server. Here we setup the server
+// and start it. We have Getter functions which get necessary info such as an
+// instance, Ip address, Server Port, and Client List. It then starts the
+// clientListenerThread, and has the ability to UpdateClientInfo and Find a
+// client by Its IP and Port address. It also checks if a client exists and
+// can remove a client, as well as add one.
+
+
+
 package ServerModel;
 
 import java.io.IOException;

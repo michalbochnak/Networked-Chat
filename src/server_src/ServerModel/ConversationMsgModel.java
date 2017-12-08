@@ -1,3 +1,21 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The ConversationMsgModel java class is what controls the sending and receiving
+// from which participant to which receiver. It Gets Both sender and Recipient
+// as well as sets the Sender, Recipient and Encrypted message that is to be
+// sent through the server to a client.
+
+
+
 package ServerModel;
 
 import java.io.Serializable;

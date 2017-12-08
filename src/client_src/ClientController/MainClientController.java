@@ -1,3 +1,22 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+
+//The java class MainClientControllerView is a class which mainly calls and
+// sets up the Client Controller. It has the ability to Get the chat Stage,
+// Set the chat Stage, and Gets client controller as well as the view controller.
+
+
+
+
 package ClientController;
 
 

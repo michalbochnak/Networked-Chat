@@ -1,3 +1,20 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The ClientPublicProfile java class is a class which gets the clients who are
+// connected to the profile as well as gets their Nickname and public Key for
+// usage. It has a setter function for the Nickname as well.
+
+
+
 package ServerModel;
 
 import ClientModel.Pair;

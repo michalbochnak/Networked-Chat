@@ -1,3 +1,23 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The MessagesPanel Java class is the java classs in which it sets up the message
+// dialog box which allows the user to type in different messages. It sets up the
+// header, The scroller message as well as takes the Person who you are sending
+//the message to under consideration.
+
+
+
+
+
 package ClientView;
 
 import javax.swing.*;

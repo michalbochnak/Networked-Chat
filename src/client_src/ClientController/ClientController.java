@@ -10,6 +10,16 @@
 // ClientController.java
 //
 
+
+//The class ClientController class controls certain aspects of the client. There
+// are different functions here to get things such as The clientmodel, all users
+// connected, connect to the server, start threading to be able to recieve data,
+// show the dialog for user type in information, check if user is available, send
+// messages. It also does things such as waiting for the server to send in data,
+// updating the message, removing client username, and a bit of decryption such as
+// on private Key and D & N as specified in the write up. Lastly there is a "Run"
+// function which Allows for the object being sen tin to be read and processed.
+
 package ClientController;
 
 import ClientModel.*;

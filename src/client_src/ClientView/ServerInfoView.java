@@ -1,3 +1,20 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+//The ServerInfoView Message Box allowes to display server Info Such
+// as the IP, Port NUmber, PQ Label. It also sets up the text field
+// for each of these items so they can be placed there. It also adds
+//adds an action listener for the user to click okay.
+
+
+
 package ClientView;
 
 import javax.swing.*;

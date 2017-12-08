@@ -1,3 +1,21 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The InitialClientInfoMsgModel java class is a class which sets the client Info
+// nickname, port, ip, and public key. It then has a bunch of Getter functions
+// in order to be able to retain that information anywhere else in the file. It
+// also has a SetNameAvailability yo make sure the name is available and can be
+// set(aka not in use).
+
+
 package ServerModel;
 
 import ClientModel.Pair;

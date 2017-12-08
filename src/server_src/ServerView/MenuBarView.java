@@ -1,3 +1,19 @@
+//
+// Michal Bochnak, Netid: mbochn2
+// Artur Wojcik, Netid: awojci5
+// Jakub Glebocki, Netid: jglebo2
+//
+// CS 342 Project #5 - Networked Chat Server
+// Dec 7, 2017
+// UIC, Pat Troy
+//
+
+
+//The MenuBarView java class allowed of viewing the MenuBars displayed to the
+// user. It sets up the FileMenu and Help Menu. It has Listeners for Quiting,
+// Helping, And click the about tab on the window of the server.
+
+
 package ServerView;
 
 import javax.swing.*;
